@@ -48,7 +48,7 @@
 
         .container { width: 90%; max-width: 1600px; display: grid; grid-template-columns: 40% 55%; gap: 5%; z-index: 2; }
         .narrative-panel { background: rgba(21, 25, 30, 0.95); padding: 50px; border: 1px solid var(--border-dim); border-radius: 4px; backdrop-filter: blur(5px); }
-        .narrative-panel p { line-height: 1.7; color: #cbd5e1; font-weight: 300; }
+        .narrative-panel p { line-height: 1.7; color: #cbd5e1; font-weight: 300; margin-bottom: 15px; }
 
         .field-note-toggle { background: #1e293b; border: none; color: var(--tech-teal); padding: 15px 20px; width: 100%; text-align: left; font-family: 'JetBrains Mono', monospace; cursor: pointer; margin-top: 30px; text-transform: uppercase; font-size: 0.75rem; display: flex; justify-content: space-between; border-radius: 4px; }
         .hidden-note { display: none; background: #0f172a; padding: 25px; border-left: 2px solid var(--tech-teal); color: #94a3b8; font-size: 0.9rem; line-height: 1.6; margin-top: 10px; }
@@ -69,7 +69,7 @@
         .spec-item { border-left: 2px solid var(--border-active); padding-left: 12px; }
         .spec-item strong { color: var(--text-main); display: block; margin-bottom: 4px; }
 
-        .audit-grid { display: grid; grid-template-columns: 1fr 160px; gap: 2px; background: var(--border-dim); border-radius: 8px; overflow: hidden; }
+        .audit-grid { display: grid; grid-template-columns: 1fr 180px; gap: 2px; background: var(--border-dim); border-radius: 8px; overflow: hidden; }
         .audit-cell { background: #1e293b; padding: 12px 15px; font-family: 'JetBrains Mono'; font-size: 0.7rem; }
         .status-cell { text-align: center; font-weight: bold; background: #0f172a; }
         .stat-fail { color: var(--tech-amber); }
@@ -81,10 +81,13 @@
         .seg-danger { background: var(--border-active); width: 55%; height: 100%; position: absolute; left: 45%; }
         .marker-line { position: absolute; top: 0; bottom: 0; width: 2px; background: white; z-index: 10; left: 48%; }
 
-        .timeline-container { position: relative; height: 50px; margin-top: 10px; }
+        /* LENS 04 GRAPH LOGIC */
+        .timeline-container { position: relative; height: 60px; margin-top: 10px; }
         .tm-track { width: 100%; height: 2px; background: var(--border-active); position: absolute; top: 15px; }
-        .tm-safe-bar { position: absolute; top: 13px; height: 6px; left: 0; width: 70%; background: var(--tech-amber); border-radius: 4px; }
-        .tm-child-bar { position: absolute; top: 25px; height: 4px; left: 0; width: 95%; background: var(--tech-teal); border-radius: 4px; }
+        .tm-safe-bar { position: absolute; top: 12px; height: 8px; left: 0; width: 70%; background: var(--tech-amber); border-radius: 4px; }
+        .tm-child-bar { position: absolute; top: 30px; height: 8px; left: 0; width: 100%; background: var(--tech-teal); border-radius: 4px; }
+        .graph-label { font-family: 'JetBrains Mono'; font-size: 0.65rem; color: var(--text-muted); margin-bottom: 5px; display: block; }
+        .danger-overlay { position: absolute; left: 70%; width: 30%; top: 0; height: 50px; background: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(255, 183, 77, 0.15) 5px, rgba(255, 183, 77, 0.15) 10px); border-left: 1px dashed var(--tech-amber); }
 
         .references { background: #080a0c; padding: 80px 10%; border-top: 1px solid var(--border-dim); color: var(--text-muted); font-size: 0.85rem; }
         .ref-item { padding-left: 40px; text-indent: -40px; margin-bottom: 15px; font-family: 'JetBrains Mono'; line-height: 1.6; }
@@ -109,9 +112,13 @@
             <div class="narrative-panel">
                 <span class="lens-tag">LENS 01 // SPATIAL ANTAGONISM</span>
                 <h2>The Blind Curve</h2>
-                <p>Hanover Public School's approach features a sharp, blind curve. Street geometry obscures children from driver view, creating a mechanical impossibility for safe stopping.</p>
+                <p>Hanover Public School sits at a critical geometric failure point. The approach road features a sharp, blind curve that fundamentally restricts the sightlines of oncoming drivers immediately before the student crosswalk.</p>
+                <p>This is a mechanical conflict: the road geometry dictates that a driver cannot see a crossing student until it is too late to react. At the posted speed, the distance required to stop exceeds the actual visibility provided by the curve.</p>
                 <button class="field-note-toggle" onclick="toggleNote('n1')">Read Field Notes</button>
-                <div id="n1" class="hidden-note"><strong>LOG: FEB 12</strong><br>Drivers entering the curve have less than 26m of visibility. Mechanical stopping distance at 44km/h exceeds available sightlines.</div>
+                <div id="n1" class="hidden-note">
+                    <strong>OBSERVATION LOG: FEB 12 // MORNING DROP-OFF</strong><br>
+                    Observed average vehicle approach speed: 44km/h. Physical measurements confirm visibility is restricted to 25 meters by the curve. Mathematical stopping distance at this speed is 26.4 meters. Drivers are mechanically incapable of stopping for a child they cannot see.
+                </div>
             </div>
             <div class="visual-stack">
                 <div class="tab-bar">
@@ -125,8 +132,8 @@
                 <div class="data-hud">
                     <div class="hud-header"><span>ANALYSIS: THE IMPACT ZONE</span><span>LOC: HANOVER RD</span></div>
                     <div class="tech-specs">
-                        <div class="spec-item"><strong>STOPPING MARGIN</strong>DEFICIT</div>
-                        <div class="spec-item"><strong>VISIBILITY</strong>CRITICAL</div>
+                        <div class="spec-item"><strong>REQUIRED STOPPING DISTANCE</strong>26.4 METERS</div>
+                        <div class="spec-item"><strong>ACTUAL VISIBILITY LIMIT</strong>25.0 METERS</div>
                     </div>
                     <div class="graph-pill-container">
                         <div class="seg-safe"></div>
@@ -144,9 +151,13 @@
             <div class="narrative-panel">
                 <span class="lens-tag">LENS 02 // SPATIAL ANTAGONISM</span>
                 <h2>The Squeeze</h2>
-                <p>At Lester B. Pearson, the "Kiss & Ride" operates way over capacity. Snow mounds create a complete visual blockage at the exit, forcing dangerous merges into traffic.</p>
+                <p>The "Kiss & Ride" at Lester B. Pearson is a textbook example of infrastructure operating beyond its breaking point. The facility was designed for a 12-car throughput, yet it is forced to manage over 45 vehicles during peak periods.</p>
+                <p>Compounding this spatial failure, winter maintenance piles snow mounds at the lot exit. This creates a complete visual blackout for parents nosing out into the main arterial path of arriving students.</p>
                 <button class="field-note-toggle" onclick="toggleNote('n2')">Read Field Notes</button>
-                <div id="n2" class="hidden-note"><strong>LOG: FEB 12</strong><br>Designed for 12 cars; holding 45. Exit visibility is nearly zero due to height of plowed snow mounds.</div>
+                <div id="n2" class="hidden-note">
+                    <strong>OBSERVATION LOG: FEB 12 // PEAK CONGESTION</strong><br>
+                    Queue count peaked at 45 cars. System overflow forces illegal idling on the main road. Snow mounds at the exit measure over 5 feet high, obstructing the view of the sidewalk entirely. Parents are forced to "blind nose" into the crosswalk.
+                </div>
             </div>
             <div class="visual-stack">
                 <div class="tab-bar">
@@ -158,10 +169,10 @@
                     <img id="l2-b" src="night_mound.jpg" class="map-img">
                 </div>
                 <div class="data-hud">
-                    <div class="hud-header"><span>ANALYSIS: SPILLOVER</span><span>LOC: PEARSON LOT</span></div>
+                    <div class="hud-header"><span>ANALYSIS: SPILLOVER RATE</span><span>LOC: PEARSON LOT</span></div>
                     <div class="tech-specs">
-                        <div class="spec-item"><strong>QUEUE LOAD</strong>CRITICAL</div>
-                        <div class="spec-item"><strong>EXIT VIEW</strong>OBSTRUCTED</div>
+                        <div class="spec-item"><strong>OBSERVED VEHICLE LOAD</strong>45 CARS</div>
+                        <div class="spec-item"><strong>INFRASTRUCTURE CAPACITY</strong>12 CARS</div>
                     </div>
                 </div>
             </div>
@@ -174,9 +185,13 @@
             <div class="narrative-panel">
                 <span class="lens-tag">LENS 03 // ENV. DEPRIVATION</span>
                 <h2>The Urban Void</h2>
-                <p>The demolition of the Rec Centre has left an empty field next to the school. Despite being surrounded by a dense townhouse neighborhood, the removal of the indoor playground has turned the students' primary pathway into an unobserved "dead zone."</p>
+                <p>The demolition of the local Recreation Centre has left a physical and social vacuum adjacent to the school. This field, once an active community hub, is now an empty "dead zone" that kids must cross daily.</p>
+                <p>Despite being bordered by dense townhouse developments, the path is functionally isolated. The removal of the rec center facility also removed the passive surveillance and lighting that once made this a safe, public space.</p>
                 <button class="field-note-toggle" onclick="toggleNote('n3')">Read Field Notes</button>
-                <div id="n3" class="hidden-note"><strong>LOG: FEB 12</strong><br>Indoor play space gone. Path used daily by kids from the surrounding townhouses, but it is now isolated and unlit.</div>
+                <div id="n3" class="hidden-note">
+                    <strong>OBSERVATION LOG: FEB 12 // EARLY TRANSIT</strong><br>
+                    Counted 0 active windows facing the 320m student pathway. The demolition of the playground and building has resulted in a 100% loss of indoor play space and a total lack of passive illumination for students walking home.
+                </div>
             </div>
             <div class="visual-stack">
                 <div class="tab-bar">
@@ -190,17 +205,17 @@
                 <div class="data-hud">
                     <div class="hud-header"><span>ANALYSIS: VOID TRANSIT</span><span>LOC: 150 HOWDEN</span></div>
                     <div class="tech-specs">
-                        <div class="spec-item"><strong>NEIGHBORHOOD</strong>DENSE HOUSING</div>
-                        <div class="spec-item"><strong>DEMOLITION</strong>REC CENTRE LOSS</div>
+                        <div class="spec-item"><strong>NEIGHBORHOOD CONTEXT</strong>HIGH DENSITY HOUSING</div>
+                        <div class="spec-item"><strong>ENVIRONMENTAL STATUS</strong>TOTAL FACILITY LOSS</div>
                     </div>
                     <div class="audit-grid">
                         <div class="audit-cell">ACTIVE INDOOR PLAYGROUND</div>
-                        <div class="audit-cell status-cell stat-fail">REMOVED</div>
-                        <div class="audit-cell">PASSIVE SURVEILLANCE</div>
-                        <div class="audit-cell status-cell stat-fail">LOW/OBSTRUCTED</div>
-                        <div class="audit-cell">PATHWAY UTILIZATION</div>
-                        <div class="audit-cell status-cell stat-pass">HIGH (STUDENTS)</div>
-                        <div class="audit-cell">LIGHTING LEVEL</div>
+                        <div class="audit-cell status-cell stat-fail">DEMOLISHED</div>
+                        <div class="audit-cell">PASSIVE NEIGHBORHOOD SURVEILLANCE</div>
+                        <div class="audit-cell status-cell stat-fail">ZERO VISIBILITY</div>
+                        <div class="audit-cell">STUDENT PATHWAY UTILIZATION</div>
+                        <div class="audit-cell status-cell stat-pass">HIGH FREQUENCY</div>
+                        <div class="audit-cell">POST-DEMOLITION LIGHTING</div>
                         <div class="audit-cell status-cell stat-fail">CRITICAL DARKNESS</div>
                     </div>
                 </div>
@@ -214,9 +229,13 @@
             <div class="narrative-panel">
                 <span class="lens-tag">LENS 04 // ENV. DEPRIVATION</span>
                 <h2>The Arterial Wall</h2>
-                <p>Dixie Road is a 6-lane barrier. Crosswalk signal timing does not account for child walking speeds, creating a dangerous conflict with traffic.</p>
+                <p>Dixie Road functions as a 6-lane physical barrier to student mobility. The fundamental deprivation here is temporal: the crosswalk signal timing is calculated for adult walking speeds, completely ignoring the capabilities of a child.</p>
+                <p>This creates a "Danger Zone" where children are still physically in the roadway when the traffic light turns green, forcing them to compete with high-speed arterial traffic.</p>
                 <button class="field-note-toggle" onclick="toggleNote('n4')">Read Field Notes</button>
-                <div id="n4" class="hidden-note"><strong>LOG: FEB 12</strong><br>25s signal for a 35m crossing. Result: Children are trapped in the road when traffic flow resumes.</div>
+                <div id="n4" class="hidden-note">
+                    <strong>OBSERVATION LOG: FEB 12 // AFTER SCHOOL</strong><br>
+                    Timed crosswalk signal: 25 seconds. Measured crossing distance: 35 meters. Average child walking speed: 1.0 m/s. Result: It takes a student 35 seconds to cross. They are left in the street for 10 seconds of unprotected traffic flow.
+                </div>
             </div>
             <div class="visual-stack">
                 <div class="tab-bar">
@@ -230,12 +249,15 @@
                 <div class="data-hud">
                     <div class="hud-header"><span>ANALYSIS: THE DANGER GAP</span><span>LOC: DIXIE RD</span></div>
                     <div class="tech-specs">
-                        <div class="spec-item"><strong>SIGNAL TIME</strong>25 SECONDS</div>
-                        <div class="spec-item"><strong>REQ. TIME</strong>35 SECONDS</div>
+                        <div class="spec-item"><strong>SIGNAL DURATION</strong>25 SECONDS</div>
+                        <div class="spec-item"><strong>REQUIRED CROSSING TIME</strong>35 SECONDS</div>
                     </div>
                     <div class="timeline-container">
+                        <span class="graph-label" style="color:var(--tech-amber)">TRAFFIC SIGNAL WINDOW</span>
                         <div class="tm-track"></div>
                         <div class="tm-safe-bar"></div>
+                        <div class="danger-overlay"></div>
+                        <span class="graph-label" style="color:var(--tech-teal); margin-top:15px;">CHILD CROSSING REQUIREMENT</span>
                         <div class="tm-child-bar"></div>
                     </div>
                 </div>
@@ -244,10 +266,14 @@
     </section>
 
     <footer class="references">
-        <h3 style="color: white; font-family: 'Anton'; margin-bottom: 30px;">REFERENCES</h3>
-        <div class="ref-item">Smart, B. (2026). Field Observation Logs: Brampton, Ontario.</div>
-        <div class="ref-item">Brampton GeoHub. (2025). Open Data Portal.</div>
-        <div class="ref-item">Jacobs, J. (1961). The death and life of great American cities.</div>
+        <h3 style="color: white; font-family: 'Anton'; margin-bottom: 30px; letter-spacing: 1px;">REFERENCES</h3>
+        <div class="ref-item">Smart, B. (2026). <i>Field Observation Logs: Brampton, Ontario</i>. Unpublished Raw Data.</div>
+        <div class="ref-item">Brampton GeoHub. (2025). <i>Open Data Portal: Parks and Pathways</i>. https://geohub.brampton.ca/</div>
+        <div class="ref-item">Bunge, W. (1973). <i>The geography of a revolution</i>. Schenkman Publishing Company.</div>
+        <div class="ref-item">Google. (2025). [Satellite imagery of Brampton, Ontario]. Google Earth Pro.</div>
+        <div class="ref-item">Jacobs, J. (1961). <i>The death and life of great American cities</i>. Random House.</div>
+        <div class="ref-item">Lynch, K. (1960). <i>The image of the city</i>. MIT Press.</div>
+        <div class="ref-item">Region of Peel. (2025). <i>Traffic data and vision zero statistics</i>. https://www.peelregion.ca/transportation</div>
     </footer>
 
     <script>
