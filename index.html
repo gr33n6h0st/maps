@@ -40,7 +40,6 @@
         .section { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border-dim); padding: 80px 0; }
         .bg-fixed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0.1; filter: grayscale(100%) contrast(1.2); }
 
-        /* ORIGINAL FILENAMES RESTORED */
         .bg-hero { background-image: url('hero.jpg'); }
         .bg-lens1 { background-image: url('curve.jpg'); }
         .bg-lens2 { background-image: url('driveway.jpg'); }
@@ -76,10 +75,16 @@
         .stat-fail { color: var(--tech-amber); }
         .stat-pass { color: var(--tech-teal); }
 
+        /* GRAPH STYLES */
         .graph-pill-container { width: 100%; background: #1e293b; height: 24px; border-radius: 12px; position: relative; overflow: hidden; margin-top: 10px; }
         .seg-safe { background: var(--grad-teal); width: 45%; height: 100%; position: absolute; }
         .seg-danger { background: var(--border-active); width: 55%; height: 100%; position: absolute; left: 45%; }
         .marker-line { position: absolute; top: 0; bottom: 0; width: 2px; background: white; z-index: 10; left: 48%; }
+
+        .timeline-container { position: relative; height: 50px; margin-top: 10px; }
+        .tm-track { width: 100%; height: 2px; background: var(--border-active); position: absolute; top: 15px; }
+        .tm-safe-bar { position: absolute; top: 13px; height: 6px; left: 0; width: 70%; background: var(--tech-amber); border-radius: 4px; }
+        .tm-child-bar { position: absolute; top: 25px; height: 4px; left: 0; width: 95%; background: var(--tech-teal); border-radius: 4px; }
 
         .references { background: #080a0c; padding: 80px 10%; border-top: 1px solid var(--border-dim); color: var(--text-muted); font-size: 0.85rem; }
         .ref-item { padding-left: 40px; text-indent: -40px; margin-bottom: 15px; font-family: 'JetBrains Mono'; line-height: 1.6; }
@@ -104,7 +109,7 @@
             <div class="narrative-panel">
                 <span class="lens-tag">LENS 01 // SPATIAL ANTAGONISM</span>
                 <h2>The Blind Curve</h2>
-                <p>Hanover Public School's approach features a sharp, blind curve. Street geometry obscures children from driver view, creating a mechanical impossibility for safe stopping at current speed limits.</p>
+                <p>Hanover Public School's approach features a sharp, blind curve. Street geometry obscures children from driver view, creating a mechanical impossibility for safe stopping.</p>
                 <button class="field-note-toggle" onclick="toggleNote('n1')">Read Field Notes</button>
                 <div id="n1" class="hidden-note"><strong>LOG: FEB 12</strong><br>Drivers entering the curve have less than 26m of visibility. Mechanical stopping distance at 44km/h exceeds available sightlines.</div>
             </div>
@@ -134,14 +139,44 @@
     </section>
 
     <section class="section">
+        <div class="bg-fixed bg-lens2"></div>
+        <div class="container">
+            <div class="narrative-panel">
+                <span class="lens-tag">LENS 02 // SPATIAL ANTAGONISM</span>
+                <h2>The Squeeze</h2>
+                <p>At Lester B. Pearson, the "Kiss & Ride" operates way over capacity. Snow mounds create a complete visual blockage at the exit, forcing dangerous merges into traffic.</p>
+                <button class="field-note-toggle" onclick="toggleNote('n2')">Read Field Notes</button>
+                <div id="n2" class="hidden-note"><strong>LOG: FEB 12</strong><br>Designed for 12 cars; holding 45. Exit visibility is nearly zero due to height of plowed snow mounds.</div>
+            </div>
+            <div class="visual-stack">
+                <div class="tab-bar">
+                    <button class="tab-btn active" onclick="switchTab(this, 'l2-a', 'l2-b')">MAP OVERLAY</button>
+                    <button class="tab-btn" onclick="switchTab(this, 'l2-b', 'l2-a')">NIGHT EVIDENCE</button>
+                </div>
+                <div class="map-frame">
+                    <img id="l2-a" src="map_pearson.jpg" class="map-img active">
+                    <img id="l2-b" src="night_mound.jpg" class="map-img">
+                </div>
+                <div class="data-hud">
+                    <div class="hud-header"><span>ANALYSIS: SPILLOVER</span><span>LOC: PEARSON LOT</span></div>
+                    <div class="tech-specs">
+                        <div class="spec-item"><strong>QUEUE LOAD</strong>CRITICAL</div>
+                        <div class="spec-item"><strong>EXIT VIEW</strong>OBSTRUCTED</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
         <div class="bg-fixed bg-lens3"></div>
         <div class="container">
             <div class="narrative-panel">
                 <span class="lens-tag">LENS 03 // ENV. DEPRIVATION</span>
                 <h2>The Urban Void</h2>
-                <p>The demolition of the Rec Centre has left an empty field next to the school. Despite being surrounded by a townhouse neighborhood, the lack of active facilities has turned the students' primary pathway into an unobserved "dead zone."</p>
+                <p>The demolition of the Rec Centre has left an empty field next to the school. Despite being surrounded by a dense townhouse neighborhood, the removal of the indoor playground has turned the students' primary pathway into an unobserved "dead zone."</p>
                 <button class="field-note-toggle" onclick="toggleNote('n3')">Read Field Notes</button>
-                <div id="n3" class="hidden-note"><strong>LOG: FEB 12</strong><br>Indoor playground/Rec Centre removed. Kids still use the field path daily, but they are now completely isolated from neighborhood surveillance.</div>
+                <div id="n3" class="hidden-note"><strong>LOG: FEB 12</strong><br>Indoor play space gone. Path used daily by kids from the surrounding townhouses, but it is now isolated and unlit.</div>
             </div>
             <div class="visual-stack">
                 <div class="tab-bar">
@@ -155,7 +190,7 @@
                 <div class="data-hud">
                     <div class="hud-header"><span>ANALYSIS: VOID TRANSIT</span><span>LOC: 150 HOWDEN</span></div>
                     <div class="tech-specs">
-                        <div class="spec-item"><strong>NEIGHBORHOOD</strong>TOWNHOUSE DENSE</div>
+                        <div class="spec-item"><strong>NEIGHBORHOOD</strong>DENSE HOUSING</div>
                         <div class="spec-item"><strong>DEMOLITION</strong>REC CENTRE LOSS</div>
                     </div>
                     <div class="audit-grid">
@@ -165,8 +200,43 @@
                         <div class="audit-cell status-cell stat-fail">LOW/OBSTRUCTED</div>
                         <div class="audit-cell">PATHWAY UTILIZATION</div>
                         <div class="audit-cell status-cell stat-pass">HIGH (STUDENTS)</div>
-                        <div class="audit-cell">REPLACEMENT FACILITY</div>
-                        <div class="audit-cell status-cell stat-fail">VOID/EMPTY</div>
+                        <div class="audit-cell">LIGHTING LEVEL</div>
+                        <div class="audit-cell status-cell stat-fail">CRITICAL DARKNESS</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="bg-fixed bg-lens4"></div>
+        <div class="container">
+            <div class="narrative-panel">
+                <span class="lens-tag">LENS 04 // ENV. DEPRIVATION</span>
+                <h2>The Arterial Wall</h2>
+                <p>Dixie Road is a 6-lane barrier. Crosswalk signal timing does not account for child walking speeds, creating a dangerous conflict with traffic.</p>
+                <button class="field-note-toggle" onclick="toggleNote('n4')">Read Field Notes</button>
+                <div id="n4" class="hidden-note"><strong>LOG: FEB 12</strong><br>25s signal for a 35m crossing. Result: Children are trapped in the road when traffic flow resumes.</div>
+            </div>
+            <div class="visual-stack">
+                <div class="tab-bar">
+                    <button class="tab-btn active" onclick="switchTab(this, 'l4-a', 'l4-b')">MAP OVERLAY</button>
+                    <button class="tab-btn" onclick="switchTab(this, 'l4-b', 'l4-a')">NIGHT EVIDENCE</button>
+                </div>
+                <div class="map-frame">
+                    <img id="l4-a" src="map_dixie.jpg" class="map-img active">
+                    <img id="l4-b" src="night_sign.jpg" class="map-img">
+                </div>
+                <div class="data-hud">
+                    <div class="hud-header"><span>ANALYSIS: THE DANGER GAP</span><span>LOC: DIXIE RD</span></div>
+                    <div class="tech-specs">
+                        <div class="spec-item"><strong>SIGNAL TIME</strong>25 SECONDS</div>
+                        <div class="spec-item"><strong>REQ. TIME</strong>35 SECONDS</div>
+                    </div>
+                    <div class="timeline-container">
+                        <div class="tm-track"></div>
+                        <div class="tm-safe-bar"></div>
+                        <div class="tm-child-bar"></div>
                     </div>
                 </div>
             </div>
