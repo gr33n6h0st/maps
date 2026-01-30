@@ -46,14 +46,45 @@
         .bg-lens3 { background-image: url('void.jpg'); }
         .bg-lens4 { background-image: url('arterial.jpg'); }
 
-        .container { width: 90%; max-width: 1600px; display: grid; grid-template-columns: 40% 55%; gap: 5%; z-index: 2; }
-        .narrative-panel { background: rgba(21, 25, 30, 0.95); padding: 50px; border: 1px solid var(--border-dim); border-radius: 4px; backdrop-filter: blur(5px); }
-        .narrative-panel p { line-height: 1.7; color: #cbd5e1; font-weight: 300; margin-bottom: 15px; }
+        /* OVERALL VERDICT BLOCK */
+        .verdict-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto 60px auto;
+            background: #0f172a;
+            border: 1px solid var(--border-active);
+            padding: 40px;
+            text-align: left;
+            position: relative;
+        }
+        .verdict-quote {
+            font-family: 'Inter';
+            font-style: italic;
+            font-size: 1.4rem;
+            color: var(--text-main);
+            margin-bottom: 30px;
+            border-left: 4px solid var(--tech-teal);
+            padding-left: 20px;
+            line-height: 1.4;
+        }
+        .verdict-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            font-family: 'JetBrains Mono';
+        }
+        .v-stat-item strong { display: block; color: var(--tech-teal); font-size: 1.8rem; margin-bottom: 5px; }
+        .v-stat-item span { color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
 
-        .field-note-toggle { background: #1e293b; border: none; color: var(--tech-teal); padding: 15px 20px; width: 100%; text-align: left; font-family: 'JetBrains Mono', monospace; cursor: pointer; margin-top: 30px; text-transform: uppercase; font-size: 0.75rem; display: flex; justify-content: space-between; border-radius: 4px; }
+        /* GRID FIXES */
+        .container { width: 90%; max-width: 1600px; display: grid; grid-template-columns: 40% 55%; gap: 5%; z-index: 2; align-items: start; }
+        .narrative-panel { background: rgba(21, 25, 30, 0.95); padding: 50px; border: 1px solid var(--border-dim); border-radius: 4px; backdrop-filter: blur(5px); }
+        .narrative-panel p { line-height: 1.7; color: #cbd5e1; font-weight: 300; margin-bottom: 20px; }
+
+        .field-note-toggle { background: #1e293b; border: none; color: var(--tech-teal); padding: 15px 20px; width: 100%; text-align: left; font-family: 'JetBrains Mono', monospace; cursor: pointer; margin-top: 10px; text-transform: uppercase; font-size: 0.75rem; display: flex; justify-content: space-between; border-radius: 4px; }
         .hidden-note { display: none; background: #0f172a; padding: 25px; border-left: 2px solid var(--tech-teal); color: #94a3b8; font-size: 0.9rem; line-height: 1.6; margin-top: 10px; }
 
-        .visual-stack { display: flex; flex-direction: column; border: 1px solid var(--border-dim); background: #0f172a; border-radius: 4px; overflow: hidden; }
+        .visual-stack { display: flex; flex-direction: column; border: 1px solid var(--border-dim); background: #0f172a; border-radius: 4px; overflow: hidden; position: sticky; top: 50px; }
         .tab-bar { display: flex; background: #1e293b; border-bottom: 1px solid var(--border-dim); }
         .tab-btn { flex: 1; padding: 15px; border: none; background: transparent; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; cursor: pointer; font-size: 0.75rem; }
         .tab-btn.active { background: #0f172a; color: var(--tech-teal); border-top: 3px solid var(--tech-teal); }
@@ -75,34 +106,45 @@
         .stat-fail { color: var(--tech-amber); }
         .stat-pass { color: var(--tech-teal); }
 
-        /* GRAPH STYLES */
         .graph-pill-container { width: 100%; background: #1e293b; height: 24px; border-radius: 12px; position: relative; overflow: hidden; margin-top: 10px; }
         .seg-safe { background: var(--grad-teal); width: 45%; height: 100%; position: absolute; }
         .seg-danger { background: var(--border-active); width: 55%; height: 100%; position: absolute; left: 45%; }
         .marker-line { position: absolute; top: 0; bottom: 0; width: 2px; background: white; z-index: 10; left: 48%; }
 
-        /* LENS 04 GRAPH LOGIC */
-        .timeline-container { position: relative; height: 60px; margin-top: 10px; }
-        .tm-track { width: 100%; height: 2px; background: var(--border-active); position: absolute; top: 15px; }
-        .tm-safe-bar { position: absolute; top: 12px; height: 8px; left: 0; width: 70%; background: var(--tech-amber); border-radius: 4px; }
-        .tm-child-bar { position: absolute; top: 30px; height: 8px; left: 0; width: 100%; background: var(--tech-teal); border-radius: 4px; }
-        .graph-label { font-family: 'JetBrains Mono'; font-size: 0.65rem; color: var(--text-muted); margin-bottom: 5px; display: block; }
-        .danger-overlay { position: absolute; left: 70%; width: 30%; top: 0; height: 50px; background: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(255, 183, 77, 0.15) 5px, rgba(255, 183, 77, 0.15) 10px); border-left: 1px dashed var(--tech-amber); }
+        /* LENS 04 FIXES */
+        .timeline-container { position: relative; height: 80px; margin-top: 20px; }
+        .tm-track { width: 100%; height: 2px; background: var(--border-active); position: absolute; top: 20px; }
+        .tm-safe-bar { position: absolute; top: 17px; height: 8px; left: 0; width: 70%; background: var(--tech-amber); border-radius: 4px; }
+        .tm-child-bar { position: absolute; top: 45px; height: 8px; left: 0; width: 100%; background: var(--tech-teal); border-radius: 4px; }
+        .graph-label { font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted); margin-bottom: 8px; display: block; line-height: 1.2; }
+        .danger-overlay { position: absolute; left: 70%; width: 30%; top: 0; height: 65px; background: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(255, 183, 77, 0.15) 5px, rgba(255, 183, 77, 0.15) 10px); border-left: 1px dashed var(--tech-amber); }
 
         .references { background: #080a0c; padding: 80px 10%; border-top: 1px solid var(--border-dim); color: var(--text-muted); font-size: 0.85rem; }
         .ref-item { padding-left: 40px; text-indent: -40px; margin-bottom: 15px; font-family: 'JetBrains Mono'; line-height: 1.6; }
 
-        @media (max-width: 1024px) { .container { grid-template-columns: 1fr; } h1 { font-size: 10vw; } }
+        @media (max-width: 1024px) { .container { grid-template-columns: 1fr; } h1 { font-size: 10vw; } .visual-stack { position: relative; top: 0; margin-top: 40px; } }
     </style>
 </head>
 <body>
 
     <section class="section">
         <div class="bg-fixed bg-hero"></div>
-        <div style="text-align: center; z-index: 5;">
-            <div class="lens-tag">SOCIOLOGICAL INQUIRY 1</div>
+        <div style="text-align: center; z-index: 5; width: 100%;">
+            <div class="lens-tag">SOCIOLOGICAL INQUIRY 1 & 2</div>
             <h1>Spatial Antagonism &<br>Environmental Deprivation</h1>
             <p class="author">BRANDON SMART // 2026</p>
+
+            <div class="verdict-container">
+                <div class="verdict-quote">
+                    "The city is a machine for living, but for the child, it has become a machine of isolation and physical risk."
+                </div>
+                <div class="verdict-stats">
+                    <div class="v-stat-item"><strong>-10.0s</strong><span>Safety Gap (Dixie)</span></div>
+                    <div class="v-stat-item"><strong>3.75x</strong><span>Capacity Failure</span></div>
+                    <div class="v-stat-item"><strong>100%</strong><span>Facility Loss (Void)</span></div>
+                    <div class="v-stat-item"><strong>CRITICAL</strong><span>Visibility Deficit</span></div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -112,9 +154,9 @@
             <div class="narrative-panel">
                 <span class="lens-tag">LENS 01 // SPATIAL ANTAGONISM</span>
                 <h2>The Blind Curve</h2>
-                <p>Hanover Public School sits at a critical geometric failure point. The approach road features a sharp, blind curve that fundamentally restricts the sightlines of oncoming drivers immediately before the student crosswalk.</p>
-                <p>This is a mechanical conflict: the road geometry dictates that a driver cannot see a crossing student until it is too late to react. At the posted speed, the distance required to stop exceeds the actual visibility provided by the curve.</p>
-                <button class="field-note-toggle" onclick="toggleNote('n1')">Read Field Notes</button>
+                <p>The approach to Hanover Public School is defined by a sharp, blind curve that fundamentally restricts the sightlines of oncoming drivers immediately before the student crosswalk.</p>
+                <p>Because the road geometry is fixed, a driver cannot see a crossing student until it is too late to react. At the average observed speed, the distance required to stop exceeds the actual visibility provided by the curve.</p>
+                <button class="field-note-toggle" onclick="toggleNote('n1')">Read Field Notes <span>+</span></button>
                 <div id="n1" class="hidden-note">
                     <strong>OBSERVATION LOG: FEB 12 // MORNING DROP-OFF</strong><br>
                     Observed average vehicle approach speed: 44km/h. Physical measurements confirm visibility is restricted to 25 meters by the curve. Mathematical stopping distance at this speed is 26.4 meters. Drivers are mechanically incapable of stopping for a child they cannot see.
@@ -151,9 +193,9 @@
             <div class="narrative-panel">
                 <span class="lens-tag">LENS 02 // SPATIAL ANTAGONISM</span>
                 <h2>The Squeeze</h2>
-                <p>The "Kiss & Ride" at Lester B. Pearson is a textbook example of infrastructure operating beyond its breaking point. The facility was designed for a 12-car throughput, yet it is forced to manage over 45 vehicles during peak periods.</p>
-                <p>Compounding this spatial failure, winter maintenance piles snow mounds at the lot exit. This creates a complete visual blackout for parents nosing out into the main arterial path of arriving students.</p>
-                <button class="field-note-toggle" onclick="toggleNote('n2')">Read Field Notes</button>
+                <p>At Lester B. Pearson, the infrastructure is operating way beyond its breaking point. This facility was designed for a 12-car throughput, yet it manages over 45 vehicles during peak school hours.</p>
+                <p>Snow mounds at the lot exit create a complete visual blackout for parents nosing out into the main arterial path where students are walking.</p>
+                <button class="field-note-toggle" onclick="toggleNote('n2')">Read Field Notes <span>+</span></button>
                 <div id="n2" class="hidden-note">
                     <strong>OBSERVATION LOG: FEB 12 // PEAK CONGESTION</strong><br>
                     Queue count peaked at 45 cars. System overflow forces illegal idling on the main road. Snow mounds at the exit measure over 5 feet high, obstructing the view of the sidewalk entirely. Parents are forced to "blind nose" into the crosswalk.
@@ -185,9 +227,9 @@
             <div class="narrative-panel">
                 <span class="lens-tag">LENS 03 // ENV. DEPRIVATION</span>
                 <h2>The Urban Void</h2>
-                <p>The demolition of the local Recreation Centre has left a physical and social vacuum adjacent to the school. This field, once an active community hub, is now an empty "dead zone" that kids must cross daily.</p>
-                <p>Despite being bordered by dense townhouse developments, the path is functionally isolated. The removal of the rec center facility also removed the passive surveillance and lighting that once made this a safe, public space.</p>
-                <button class="field-note-toggle" onclick="toggleNote('n3')">Read Field Notes</button>
+                <p>The demolition of the local Recreation Centre has left a physical and social vacuum adjacent to the school. This field is now a "dead zone" that students cross daily despite having no active eyes on it.</p>
+                <p>Bordered by dense townhouse developments, the path is functionally isolated. The removal of the rec center facility also removed the passive surveillance and lighting that once secured this space.</p>
+                <button class="field-note-toggle" onclick="toggleNote('n3')">Read Field Notes <span>+</span></button>
                 <div id="n3" class="hidden-note">
                     <strong>OBSERVATION LOG: FEB 12 // EARLY TRANSIT</strong><br>
                     Counted 0 active windows facing the 320m student pathway. The demolition of the playground and building has resulted in a 100% loss of indoor play space and a total lack of passive illumination for students walking home.
@@ -229,9 +271,9 @@
             <div class="narrative-panel">
                 <span class="lens-tag">LENS 04 // ENV. DEPRIVATION</span>
                 <h2>The Arterial Wall</h2>
-                <p>Dixie Road functions as a 6-lane physical barrier to student mobility. The fundamental deprivation here is temporal: the crosswalk signal timing is calculated for adult walking speeds, completely ignoring the capabilities of a child.</p>
-                <p>This creates a "Danger Zone" where children are still physically in the roadway when the traffic light turns green, forcing them to compete with high-speed arterial traffic.</p>
-                <button class="field-note-toggle" onclick="toggleNote('n4')">Read Field Notes</button>
+                <p>Dixie Road is a 6-lane physical barrier. The deprivation here is temporal: crosswalk signal timing is calculated for adult walking speeds, ignoring the actual capabilities of a child.</p>
+                <p>This creates a "Danger Zone" where children are still in the roadway when the traffic light turns green, forcing them to compete with high-speed traffic.</p>
+                <button class="field-note-toggle" onclick="toggleNote('n4')">Read Field Notes <span>+</span></button>
                 <div id="n4" class="hidden-note">
                     <strong>OBSERVATION LOG: FEB 12 // AFTER SCHOOL</strong><br>
                     Timed crosswalk signal: 25 seconds. Measured crossing distance: 35 meters. Average child walking speed: 1.0 m/s. Result: It takes a student 35 seconds to cross. They are left in the street for 10 seconds of unprotected traffic flow.
