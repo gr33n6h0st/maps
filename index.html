@@ -12,15 +12,24 @@
     <style>
         /* --- THEME: INDUSTRIAL SLATE & GREY --- */
         :root {
+            /* Backgrounds - Neutral Greys */
             --bg-deep: #121417; 
             --bg-panel: #1a1d21;
+            
+            /* UI Borders */
             --border-dim: #33383e;
             --border-active: #4a5568;
+            
+            /* Text */
             --text-main: #e2e8f0;
             --text-muted: #94a3b8;
+            
+            /* PALETTE: Teal & Amber */
             --tech-teal: #4db6ac;     
             --tech-amber: #ffb74d;    
             --tech-slate: #64748b;    
+            
+            /* Gradients */
             --grad-teal: linear-gradient(90deg, #26a69a, #80cbc4);
             --grad-amber: linear-gradient(90deg, #ff9800, #ffcc80);
         }
@@ -75,22 +84,20 @@
             font-size: 0.8rem; 
         }
 
-        /* --- RESEARCH HUD --- */
+        /* --- RESEARCH HUD (Restored Adjustment #2) --- */
         .research-hud {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin: 30px auto;
-            font-family: 'JetBrains Mono', monospace;
-            background: rgba(255,255,255,0.03);
-            padding: 20px;
-            border: 1px solid var(--border-dim);
-            border-radius: 4px;
-            width: fit-content;
+            display: flex; justify-content: center; gap: 40px; margin: 30px auto;
+            font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.03);
+            padding: 20px; border: 1px solid var(--border-dim); border-radius: 4px; width: fit-content;
         }
         .hud-stat { text-align: left; }
         .hud-val { display: block; color: var(--tech-teal); font-weight: bold; font-size: 1.1rem; }
         .hud-label { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; }
+
+        .purpose-statement {
+            max-width: 800px; margin: 20px auto; color: var(--text-muted);
+            font-size: 0.9rem; line-height: 1.6; font-style: italic;
+        }
 
         /* --- LAYOUT UTILS --- */
         .section {
@@ -122,6 +129,7 @@
             z-index: 2;
         }
 
+        /* --- LEFT PANEL: NARRATIVE --- */
         .narrative-panel {
             background: rgba(26, 29, 33, 0.96);
             padding: 50px;
@@ -132,6 +140,7 @@
 
         .narrative-panel p { line-height: 1.7; color: #cbd5e1; font-weight: 300; }
 
+        /* BUTTONS */
         .field-note-toggle {
             background: #24292e; 
             border: none;
@@ -147,8 +156,8 @@
             background: var(--tech-teal); 
             color: #121417; 
         }
+        .field-note-toggle::after { content: "+ EXPAND LOG"; opacity: 0.7; }
 
-        /* --- TEAL BOLD FOR FIELD NOTES --- */
         .hidden-note {
             display: none; background: #121417; padding: 25px;
             border-left: 2px solid var(--tech-teal);
@@ -156,11 +165,13 @@
             font-family: 'Inter', sans-serif;
             margin-top: 10px;
         }
-        .hidden-note strong, .hidden-note b {
-            color: var(--tech-teal);
-            font-weight: 700;
-        }
 
+        /* --- SYNTHESIS SECTION (Restored Adjustment #1) --- */
+        .synthesis-section { padding: 80px 10%; background: #0d0f12; border-top: 1px solid var(--border-dim); }
+        .synthesis-quote { font-family: 'Inter', sans-serif; font-size: 1.8rem; font-weight: 300; font-style: italic; color: var(--text-main); line-height: 1.6; max-width: 1000px; margin: 0 auto; border-left: 4px solid var(--tech-teal); padding-left: 40px; }
+        .synthesis-quote b { color: var(--tech-teal); font-style: normal; }
+
+        /* --- RIGHT PANEL: VISUALS --- */
         .visual-stack { 
             display: flex; flex-direction: column; 
             border: 1px solid var(--border-dim); 
@@ -175,6 +186,7 @@
             font-family: 'JetBrains Mono', monospace; cursor: pointer; font-size: 0.75rem;
             transition: 0.2s; letter-spacing: 1px;
         }
+        .tab-btn:hover { color: white; }
         .tab-btn.active { 
             background: #121417; 
             color: var(--tech-teal); 
@@ -191,6 +203,7 @@
         }
         .map-img.active { display: block; }
 
+        /* --- DATA HUD --- */
         .data-hud { 
             padding: 35px; 
             background: #1a1d21;
@@ -213,6 +226,7 @@
         .spec-item { border-left: 2px solid var(--border-active); padding-left: 12px; }
         .spec-item strong { color: var(--text-main); display: block; margin-bottom: 4px; font-weight: 600; }
 
+        /* --- GRAPH STYLES --- */
         .bar-label-group {
             display: flex; justify-content: space-between; margin-bottom: 8px;
             font-family: 'JetBrains Mono'; font-size: 0.7rem;
@@ -225,16 +239,23 @@
         .impact-zone-label { color: var(--tech-amber); font-weight: bold; }
         .seg-safe { background: var(--grad-teal); width: 45%; height: 100%; position: absolute; left: 0; }
         .seg-danger { background: var(--border-active); width: 55%; height: 100%; position: absolute; left: 45%; }
-        .marker-line { position: absolute; top: 0; bottom: 0; width: 2px; background: white; z-index: 10; }
+        .marker-line {
+            position: absolute; top: 0; bottom: 0; width: 2px; background: white; z-index: 10;
+        }
         
-        .spillover-track { background: #24292e; height: 24px; border-radius: 12px; position: relative; overflow: hidden; }
+        .spillover-track { 
+            background: #24292e; height: 24px; border-radius: 12px; position: relative; overflow: hidden;
+        }
         .fill-safe { background: var(--grad-teal); width: 25%; height: 100%; position: absolute; }
         .fill-over { 
             background: repeating-linear-gradient(45deg, var(--tech-amber), var(--tech-amber) 10px, #e65100 10px, #e65100 20px); 
             left: 25%; width: 75%; height: 100%; position: absolute; 
         }
 
-        .audit-grid { display: grid; grid-template-columns: 1fr 120px; gap: 2px; background: var(--border-dim); border-radius: 8px; overflow: hidden; }
+        .audit-grid { 
+            display: grid; grid-template-columns: 1fr 120px; gap: 2px; 
+            background: var(--border-dim); border-radius: 8px; overflow: hidden;
+        }
         .audit-cell { background: #24292e; padding: 12px 15px; font-family: 'JetBrains Mono'; font-size: 0.7rem; }
         .status-cell { text-align: center; font-weight: bold; background: #121417; }
         .stat-fail { color: var(--tech-amber); }
@@ -242,36 +263,24 @@
 
         .timeline-container { position: relative; height: 60px; margin-top: 20px; }
         .tm-track { width: 100%; height: 2px; background: var(--border-active); position: absolute; top: 20px; }
-        .tm-safe-bar { position: absolute; top: 18px; height: 6px; left: 0; width: 70%; background: var(--tech-amber); border-radius: 4px; }
-        .tm-child-bar { position: absolute; top: 35px; height: 4px; left: 0; width: 95%; background: var(--tech-teal); border-radius: 4px; }
-
-        /* --- SYNTHESIS STATEMENT SECTION --- */
-        .synthesis-section {
-            padding: 80px 10%;
-            background: #0d0f12;
-            text-align: center;
-            border-top: 1px solid var(--border-dim);
+        
+        .tm-safe-bar { 
+            position: absolute; top: 18px; height: 6px; left: 0; width: 70%; 
+            background: var(--tech-amber); border-radius: 4px;
         }
-        .synthesis-quote {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 300;
-            font-style: italic;
-            color: var(--text-main);
-            line-height: 1.6;
-            max-width: 950px;
-            margin: 0 auto;
-            border-left: 3px solid var(--tech-teal);
-            padding-left: 30px;
-            text-align: left;
+        .tm-child-bar {
+            position: absolute; top: 35px; height: 4px; left: 0; width: 95%;
+            background: var(--tech-teal); border-radius: 4px;
         }
-        .synthesis-quote b { color: var(--tech-teal); font-style: normal; }
 
         .references { 
             background: #080a0c; padding: 80px 10%; border-top: 1px solid var(--border-dim); 
             color: var(--text-muted); font-size: 0.85rem; 
         }
-        .ref-item { padding-left: 40px; text-indent: -40px; margin-bottom: 15px; font-family: 'JetBrains Mono', monospace; line-height: 1.6; }
+        .ref-item { 
+            padding-left: 40px; text-indent: -40px; margin-bottom: 15px; 
+            font-family: 'JetBrains Mono', monospace; line-height: 1.6;
+        }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -286,14 +295,15 @@
     <section class="section">
         <div class="bg-fixed bg-hero"></div>
         <div style="text-align: center; z-index: 5;">
-            <div class="lens-tag">SOCIOLOGICAL INQUIRY 1 & 2</div>
+            <div class="lens-tag">SOCIOLOGICAL INQUIRY 1</div>
             <h1>Spatial Antagonism &<br>Environmental Deprivation</h1>
             <p class="author">BRANDON SMART // 2026</p>
 
+            <p class="purpose-statement">Purpose: An investigation into the structural exclusion of children from public space through hostile infrastructure design and the resulting "visibility gaps" within the Howden-Dixie corridor.</p>
             <div class="research-hud">
-                <div class="hud-stat"><span class="hud-val">1.0 HOUR</span><span class="hud-label">Observation Duration</span></div>
+                <div class="hud-stat"><span class="hud-val">1.5 HOURS</span><span class="hud-label">Total Duration</span></div>
+                <div class="hud-stat"><span class="hud-val">DROP-OFF + NIGHT</span><span class="hud-label">Timeframes (1hr/30min)</span></div>
                 <div class="hud-stat"><span class="hud-val">WED JAN 21, 2026</span><span class="hud-label">Observation Date</span></div>
-                <div class="hud-stat"><span class="hud-val">AM / PM SESSIONS</span><span class="hud-label">Timeframes</span></div>
                 <div class="hud-stat"><span class="hud-val">CLEAR / COLD</span><span class="hud-label">Weather Conditions</span></div>
             </div>
         </div>
@@ -305,13 +315,14 @@
             <div class="narrative-panel">
                 <span class="lens-tag">LENS 01 // SPATIAL ANTAGONISM</span>
                 <h2>The Blind Curve</h2>
-                <p>Hanover Public School suffers from geometric antagonism. The street layout features a sharp curve that actively hides small pedestrians.</p>
+                <p>Hanover Public School suffers from geometric antagonism. The street layout features a sharp curve that actively hides small pedestrians. At 40 km/h, the sightline deficit creates a 'Visibility Trap' where the street design itself becomes hostile to human presence.</p>
                 <button class="field-note-toggle" onclick="toggleNote('note1')">Read Field Notes</button>
                 <div id="note1" class="hidden-note">
                     <strong>LOG: THE HANOVER GEOMETRY</strong><br>
-                    Analysis of the sightlines suggests a driver has less than <strong>2 seconds</strong> to react to a child emerging from behind winter snow windrows. This geometric failure renders crossing guards the <strong>only line of defense</strong> in a layout where driver sightlines are reduced by <strong>40%</strong>.
+                    Analysis of the sightlines suggests a driver has less than <strong>2 seconds</strong> to react to a child emerging from behind winter snow windrows. This geometric failure renders crossing guards the <strong>only line of defense</strong> in a layout where driver sightlines are reduced by <strong>40%</strong> due to curve radius and seasonal obstruction.
                 </div>
             </div>
+
             <div class="visual-stack">
                 <div class="tab-bar">
                     <button class="tab-btn active" onclick="switchTab(this, 'img1-day', 'img1-night')">MAP OVERLAY</button>
@@ -321,9 +332,31 @@
                     <img id="img1-day" src="map_hanover.jpg" class="map-img active">
                     <img id="img1-night" src="night_curve.jpg" class="map-img">
                 </div>
+                
                 <div class="data-hud">
                     <div class="hud-header"><span>ANALYSIS: THE IMPACT ZONE</span><span>LOC: HANOVER RD</span></div>
-                    <div class="graph-pill-container"><div class="seg-safe"></div><div class="seg-danger"></div><div class="marker-line" style="left: 48%;"></div></div>
+                    
+                    <div class="physics-chart">
+                        <div class="bar-label-group">
+                            <span style="color:var(--tech-teal)">VISIBILITY LIMIT (25m)</span>
+                            <span class="impact-zone-label">THE IMPACT ZONE (Danger)</span>
+                        </div>
+                        <div class="graph-pill-container">
+                            <div class="seg-safe"></div>
+                            <div class="seg-danger"></div>
+                            <div class="marker-line" style="left: 48%;"></div> 
+                        </div>
+                        <div style="display:flex; justify-content:space-between; margin-top:5px; font-family:'JetBrains Mono'; font-size:0.6rem; color:var(--text-muted);">
+                            <span>0m</span>
+                            <span style="color:white;">STOP REQ: 26m ▲</span>
+                            <span>50m</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-specs" style="margin-top:20px; margin-bottom:0;">
+                        <div class="spec-item"><strong>SPEED DELTA</strong>+4 km/h over limit</div>
+                        <div class="spec-item"><strong>VISIBILITY GAP</strong>-1.0 Meters deficit</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -335,13 +368,14 @@
             <div class="narrative-panel">
                 <span class="lens-tag">LENS 02 // SPATIAL ANTAGONISM</span>
                 <h2>The Squeeze</h2>
-                <p>At Lester B. Pearson, the 'Kiss and Ride' infrastructure collapses under vehicle volume, prioritizing machine movement over child safety.</p>
+                <p>At Lester B. Pearson, the 'Kiss and Ride' infrastructure collapses under vehicle volume. This dual-lane conflict forces 76% of children to step into traffic lanes, effectively prioritizing machine movement over child safety through forced risk.</p>
                 <button class="field-note-toggle" onclick="toggleNote('note2')">Read Field Notes</button>
                 <div id="note2" class="hidden-note">
                     <strong>LOG: THE DOUBLE-LANE TRAP</strong><br>
-                    Observed <strong>50 cars</strong>: <strong>38 children</strong> exited into the traffic 'drive-through' lane; only <strong>12</strong> utilized the curb. <strong>6-foot</strong> snow windrows force drivers to 'nose out' blindly into the pedestrian path.
+                    Observed <strong>50 cars</strong>: <strong>38 children</strong> exited into the traffic 'drive-through' lane; only <strong>12</strong> utilized the curb. The lack of faculty supervision exacerbates this chaos; the zone relies entirely on <strong>aggressive negotiation of space</strong> between rushing parents while <strong>6-foot</strong> snow windrows force drivers to 'nose out' blindly into the pedestrian path.
                 </div>
             </div>
+
             <div class="visual-stack">
                 <div class="tab-bar">
                     <button class="tab-btn active" onclick="switchTab(this, 'img2-day', 'img2-night')">MAP OVERLAY</button>
@@ -351,9 +385,22 @@
                     <img id="img2-day" src="map_pearson.jpg" class="map-img active">
                     <img id="img2-night" src="night_mound.jpg" class="map-img">
                 </div>
+                
                 <div class="data-hud">
                     <div class="hud-header"><span>ANALYSIS: THE SPILLOVER ZONE</span><span>LOC: PEARSON LOT</span></div>
-                    <div class="spillover-track"><div class="fill-safe"></div><div class="fill-over"></div></div>
+                    
+                    <div class="bar-label-group">
+                        <span style="color:var(--tech-teal)">DESIGN CAPACITY (12)</span>
+                        <span style="color:var(--tech-amber)">THE SPILLOVER ZONE (33)</span>
+                    </div>
+                    <div class="spillover-track">
+                        <div class="fill-safe"></div>
+                        <div class="fill-over"></div>
+                        <div style="position:absolute; left:25%; top:0; bottom:0; border-left:2px solid white;"></div>
+                    </div>
+                    <div style="text-align:center; font-family:'JetBrains Mono'; font-size:0.6rem; color:var(--text-muted); margin-top:5px;">
+                        ▲ SYSTEM FAILURE POINT
+                    </div>
                 </div>
             </div>
         </div>
@@ -365,13 +412,14 @@
             <div class="narrative-panel">
                 <span class="lens-tag">LENS 03 // ENV. DEPRIVATION</span>
                 <h2>The Urban Void</h2>
-                <p>The 150 Howden Blvd site represents a distinct form of environmental deprivation, signaling that this community space is now 'dead'.</p>
+                <p>The 150 Howden Blvd site represents a distinct form of environmental deprivation. Since the demolition of the Recreation Centre, the site has been reduced to a desolate, flat plain. Concrete jersey barriers—defensive architecture—signal that this community space is now 'dead'.</p>
                 <button class="field-note-toggle" onclick="toggleNote('note3')">Read Field Notes</button>
                 <div id="note3" class="hidden-note">
                     <strong>LOG: THE ARCHITECTURE OF NEGLECT</strong><br>
-                    The removal of the indoor playground has created a <strong>200-meter 'hole'</strong> in the social fabric. This 'void' offers <strong>0</strong> 'eyes on the street,' resulting in a <strong>100% loss</strong> of passive surveillance.
+                    The removal of the indoor playground has created a <strong>200-meter 'hole'</strong> in the social fabric. Students walking past are visible to high-speed traffic but <strong>disconnected from community support</strong>. This 'void' offers <strong>0</strong> 'eyes on the street,' resulting in a <strong>100% loss</strong> of passive surveillance for pedestrians.
                 </div>
             </div>
+
             <div class="visual-stack">
                 <div class="tab-bar">
                     <button class="tab-btn active" onclick="switchTab(this, 'img3-day', 'img3-night')">MAP OVERLAY</button>
@@ -380,6 +428,24 @@
                 <div class="map-frame">
                     <img id="img3-day" src="map_void.jpg" class="map-img active">
                     <img id="img3-night" src="night_wall.jpg" class="map-img">
+                </div>
+                
+                <div class="data-hud">
+                    <div class="hud-header"><span>ANALYSIS: VOID METRICS</span><span>LOC: 150 HOWDEN</span></div>
+                    
+                    <div class="audit-grid">
+                        <div class="audit-cell">COMMUNITY UTILITY (PRE-2020)</div>
+                        <div class="audit-cell status-cell stat-pass">100%</div>
+
+                        <div class="audit-cell">CURRENT USABLE INFRASTRUCTURE</div>
+                        <div class="audit-cell status-cell stat-fail">0%</div>
+
+                        <div class="audit-cell">EYES ON THE STREET (JACOBS INDEX)</div>
+                        <div class="audit-cell status-cell stat-fail">ZERO</div>
+                        
+                        <div class="audit-cell">DEFENSIVE BARRIER DENSITY</div>
+                        <div class="audit-cell status-cell stat-pass">HIGH</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -391,13 +457,14 @@
             <div class="narrative-panel">
                 <span class="lens-tag">LENS 04 // ENV. DEPRIVATION</span>
                 <h2>The Arterial Wall</h2>
-                <p>The high-speed commuter traffic on Dixie Road creates an arterial wall that severs the school zone from residential neighborhoods.</p>
+                <p>The high-speed commuter traffic on Dixie Road creates an arterial wall that severs the school zone from residential neighborhoods. This noise and pollution buffer functions as a physical barrier to independent mobility for children.</p>
                 <button class="field-note-toggle" onclick="toggleNote('note4')">Read Field Notes</button>
                 <div id="note4" class="hidden-note">
                     <strong>LOG: MACHINE SPACE</strong><br>
-                    Children are often trapped in the median for <strong>15-20 seconds</strong> as the light cycles, surrounded by <strong>60km/h+ transit</strong>, creating an environment of <strong>extreme sensory hostility</strong>.
+                    Observed children crossing at Howden/Dixie. Signal timing is optimized for vehicle throughput, not human physiology. Children are often trapped in the median for <strong>15-20 seconds</strong> as the light cycles, surrounded by <strong>60km/h+ transit</strong>, creating an environment of <strong>extreme sensory hostility</strong>.
                 </div>
             </div>
+
             <div class="visual-stack">
                 <div class="tab-bar">
                     <button class="tab-btn active" onclick="switchTab(this, 'img4-day', 'img4-night')">MAP OVERLAY</button>
@@ -407,22 +474,22 @@
                     <img id="img4-day" src="map_dixie.jpg" class="map-img active">
                     <img id="img4-night" src="night_sign.jpg" class="map-img">
                 </div>
-            </div>
-        </div>
-    </section>
+                
+                <div class="data-hud">
+                    <div class="hud-header"><span>ANALYSIS: THE DANGER ZONE</span><span>LOC: DIXIE RD</span></div>
+                    
+                    <div class="bar-label-group">
+                        <span style="color:var(--tech-amber)">SIGNAL DURATION (25s)</span>
+                        <span style="color:var(--tech-teal)">CHILD CROSSING TIME (35s)</span>
+                    </div>
 
-    <section class="section">
-        <div class="container" style="grid-template-columns: 1fr;">
-            <div class="narrative-panel" style="width: 100%;">
-                <span class="lens-tag">SYSTEMS OVERVIEW // AGGREGATE DATA</span>
-                <h2>Neighborhood Systemic Vulnerability</h2>
-                <div class="data-hud" style="margin-top: 30px; background: #121417; border: 1px solid var(--border-dim);">
-                    <div class="bar-label-group"><span>HANOVER BLIND CURVE (VISIBILITY DEFICIT)</span><span>40% DEFICIT</span></div>
-                    <div class="graph-pill-container" style="margin-bottom: 20px;"><div style="background: var(--tech-amber); width: 40%; height: 100%;"></div></div>
-                    <div class="bar-label-group"><span>PEARSON KISS & RIDE (UNSAFE EXITS)</span><span>76% CONFLICT RATE</span></div>
-                    <div class="graph-pill-container" style="margin-bottom: 20px;"><div style="background: #e65100; width: 76%; height: 100%;"></div></div>
-                    <div class="bar-label-group"><span>150 HOWDEN VOID (PASSIVE SURVEILLANCE LOSS)</span><span>100% ISOLATION</span></div>
-                    <div class="graph-pill-container"><div style="background: #ff5252; width: 100%; height: 100%;"></div></div>
+                    <div class="timeline-container">
+                        <div class="tm-track"></div>
+                        <div class="tm-safe-bar"></div>
+                        <div class="tm-child-bar"></div>
+                        <div style="position: absolute; left: 70%; width: 25%; top: 0; bottom: 0; background: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255, 183, 77, 0.2) 2px, rgba(255, 183, 77, 0.2) 4px); border-left: 1px dashed var(--tech-amber);"></div>
+                        <div style="position: absolute; left: 72%; top: 45px; font-family: 'JetBrains Mono'; font-size: 0.6rem; color: var(--tech-amber); font-weight: bold;">THE DANGER ZONE ▲</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -433,6 +500,32 @@
             "<b>Synthesis:</b> The Howden-Dixie corridor demonstrates that <b>urban neglect is not accidental, but structural</b>. When infrastructure prioritizes machine efficiency over human physiology, the resulting 'Spatial Antagonism' renders the most vulnerable citizens invisible, effectively <b>evicting children from the public sphere</b> through designed risk."
         </div>
     </div>
+
+    <section class="section">
+        <div class="container" style="grid-template-columns: 1fr;">
+            <div class="narrative-panel" style="width: 100%;">
+                <span class="lens-tag">SYSTEMS OVERVIEW // AGGREGATE DATA</span>
+                <h2>Neighborhood Systemic Vulnerability</h2>
+                <p>The following metrics represent the compounding failures of the Howden/Dixie corridor. Vulnerability is defined as the gap between infrastructure design and human safety requirements.</p>
+                
+                <div class="data-hud" style="margin-top: 30px; background: #121417; border: 1px solid var(--border-dim);">
+                    <div class="hud-header"><span>TOTAL QUANTITATIVE ANALYSIS</span><span>ZONE: HOWDEN CORRIDOR</span></div>
+                    
+                    <div class="bar-label-group"><span style="color:var(--text-main)">HANOVER BLIND CURVE (VISIBILITY DEFICIT)</span><span>40% DEFICIT</span></div>
+                    <div class="graph-pill-container" style="margin-bottom: 20px;"><div style="background: var(--tech-amber); width: 40%; height: 100%;"></div></div>
+
+                    <div class="bar-label-group"><span style="color:var(--text-main)">PEARSON KISS & RIDE (UNSAFE EXITS)</span><span>76% CONFLICT RATE</span></div>
+                    <div class="graph-pill-container" style="margin-bottom: 20px;"><div style="background: #e65100; width: 76%; height: 100%;"></div></div>
+
+                    <div class="bar-label-group"><span style="color:var(--text-main)">150 HOWDEN VOID (PASSIVE SURVEILLANCE LOSS)</span><span>100% ISOLATION</span></div>
+                    <div class="graph-pill-container" style="margin-bottom: 20px;"><div style="background: #ff5252; width: 100%; height: 100%;"></div></div>
+
+                    <div class="bar-label-group"><span style="color:var(--text-main)">DIXIE ARTERIAL (SIGNAL GAP)</span><span>28% TIME DEFICIT</span></div>
+                    <div class="graph-pill-container"><div style="background: var(--tech-teal); width: 28%; height: 100%;"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer class="references">
         <h3 style="color: white; font-family: 'Anton'; margin-bottom: 30px; letter-spacing: 1px;">REFERENCES</h3>
@@ -448,8 +541,10 @@
     <script>
         function toggleNote(id) {
             var note = document.getElementById(id);
-            note.style.display = (note.style.display === "block") ? "none" : "block";
+            if (note.style.display === "block") { note.style.display = "none"; } 
+            else { note.style.display = "block"; }
         }
+
         function switchTab(btn, showId, hideId) {
             var parent = btn.parentElement;
             var buttons = parent.getElementsByClassName('tab-btn');
@@ -459,5 +554,6 @@
             document.getElementById(hideId).classList.remove('active');
         }
     </script>
+
 </body>
 </html>
