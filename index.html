@@ -12,24 +12,15 @@
     <style>
         /* --- THEME: AEROSPACE INDUSTRIAL --- */
         :root {
-            /* Backgrounds - Deep Blue/Grey */
             --bg-deep: #0b0e11; 
             --bg-panel: #15191e;
-            
-            /* UI Borders */
             --border-dim: #2a2f35;
             --border-active: #4a5568;
-            
-            /* Text */
             --text-main: #e2e8f0;
             --text-muted: #94a3b8;
-            
-            /* PALETTE: Teal & Amber */
-            --tech-teal: #4db6ac;     /* Data / Safe / Structure */
-            --tech-amber: #ffb74d;    /* Alert / Antagonism / Danger */
-            --tech-slate: #64748b;    /* Neutral Data */
-            
-            /* Gradients */
+            --tech-teal: #4db6ac;     
+            --tech-amber: #ffb74d;    
+            --tech-slate: #64748b;    
             --grad-teal: linear-gradient(90deg, #26a69a, #80cbc4);
             --grad-amber: linear-gradient(90deg, #ff9800, #ffcc80);
         }
@@ -44,7 +35,6 @@
             letter-spacing: -0.02em;
         }
 
-        /* --- TYPOGRAPHY --- */
         h1 { 
             font-family: 'Anton', sans-serif; 
             font-size: 5vw; 
@@ -84,7 +74,6 @@
             font-size: 0.8rem; 
         }
 
-        /* --- LAYOUT UTILS --- */
         .section {
             position: relative;
             min-height: 100vh;
@@ -98,7 +87,7 @@
         .bg-fixed {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             object-fit: cover; z-index: -1;
-            opacity: 0.1; /* Subtle texture */
+            opacity: 0.1; 
             filter: grayscale(100%) sepia(20%) hue-rotate(180deg) contrast(1.2);
         }
 
@@ -114,7 +103,6 @@
             z-index: 2;
         }
 
-        /* --- LEFT PANEL: NARRATIVE --- */
         .narrative-panel {
             background: rgba(21, 25, 30, 0.95);
             padding: 50px;
@@ -125,7 +113,6 @@
 
         .narrative-panel p { line-height: 1.7; color: #cbd5e1; font-weight: 300; }
 
-        /* BUTTONS - Industrial & Clean */
         .field-note-toggle {
             background: #1e293b; 
             border: none;
@@ -151,7 +138,6 @@
             margin-top: 10px;
         }
 
-        /* --- RIGHT PANEL: VISUALS --- */
         .visual-stack { 
             display: flex; flex-direction: column; 
             border: 1px solid var(--border-dim); 
@@ -183,7 +169,6 @@
         }
         .map-img.active { display: block; }
 
-        /* --- DATA HUD (GREY THEME) --- */
         .data-hud { 
             padding: 35px; 
             background: #15191e;
@@ -206,9 +191,6 @@
         .spec-item { border-left: 2px solid var(--border-active); padding-left: 12px; }
         .spec-item strong { color: var(--text-main); display: block; margin-bottom: 4px; font-weight: 600; }
 
-        /* --- GRAPH STYLES (MATTE & PILL) --- */
-        
-        /* GENERAL BAR STYLE */
         .bar-label-group {
             display: flex; justify-content: space-between; margin-bottom: 8px;
             font-family: 'JetBrains Mono'; font-size: 0.7rem;
@@ -218,7 +200,6 @@
             position: relative; overflow: hidden;
         }
 
-        /* LENS 1: PHYSICS BAR */
         .impact-zone-label { color: var(--tech-amber); font-weight: bold; }
         .seg-safe { background: var(--grad-teal); width: 45%; height: 100%; position: absolute; left: 0; }
         .seg-danger { background: var(--border-active); width: 55%; height: 100%; position: absolute; left: 45%; }
@@ -226,7 +207,6 @@
             position: absolute; top: 0; bottom: 0; width: 2px; background: white; z-index: 10;
         }
         
-        /* LENS 2: CAPACITY */
         .spillover-track { 
             background: #1e293b; height: 24px; border-radius: 12px; position: relative; overflow: hidden;
         }
@@ -236,7 +216,6 @@
             left: 25%; width: 75%; height: 100%; position: absolute; 
         }
 
-        /* LENS 3: AUDIT GRID */
         .audit-grid { 
             display: grid; grid-template-columns: 1fr 120px; gap: 2px; 
             background: var(--border-dim); border-radius: 8px; overflow: hidden;
@@ -246,7 +225,6 @@
         .stat-fail { color: var(--tech-amber); }
         .stat-pass { color: var(--tech-teal); }
 
-        /* LENS 4: TIMELINE */
         .timeline-container { position: relative; height: 60px; margin-top: 20px; }
         .tm-track { width: 100%; height: 2px; background: var(--border-active); position: absolute; top: 20px; }
         
@@ -259,7 +237,6 @@
             background: var(--tech-teal); border-radius: 4px;
         }
 
-        /* REFERENCES */
         .references { 
             background: #080a0c; padding: 80px 10%; border-top: 1px solid var(--border-dim); 
             color: var(--text-muted); font-size: 0.85rem; 
@@ -269,9 +246,19 @@
             font-family: 'JetBrains Mono', monospace; line-height: 1.6;
         }
 
+        /* NEW SYSTEM SUMMARY BOX */
+        .system-summary {
+            background: rgba(77, 182, 172, 0.1);
+            border: 1px solid var(--tech-teal);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono';
+            font-size: 0.8rem;
+        }
+
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* MOBILE */
         @media (max-width: 1024px) {
             .container { grid-template-columns: 1fr; }
             h1 { font-size: 10vw; }
@@ -293,6 +280,10 @@
         <div class="bg-fixed bg-lens1"></div>
         <div class="container">
             <div class="narrative-panel">
+                <div class="system-summary">
+                    <strong style="color:var(--tech-teal)">SYSTEMIC OVERVIEW:</strong><br>
+                    Across 4 observation sites, 75% of designated school crossings demonstrate a "Visibility Deficit," where the 40km/h design speed exceeds the physical stopping distance.
+                </div>
                 <span class="lens-tag">LENS 01 // SPATIAL ANTAGONISM</span>
                 <h2>The Blind Curve</h2>
                 <p>Hanover Public School features a geometric anomaly: a sharp, blind curve immediately preceding the crosswalk. This represents a failure of street design where geometry actively obscures children from driver view.</p>
@@ -334,7 +325,7 @@
                     </div>
 
                     <div class="tech-specs" style="margin-top:20px; margin-bottom:0;">
-                        <div class="spec-item"><strong>SPEED DELTA</strong>+4 km/h over limit</div>
+                        <div class="spec-item"><strong>MACHINE/HUMAN RATIO</strong>8.4 : 1 (Peak)</div>
                         <div class="spec-item"><strong>VISIBILITY GAP</strong>-1.0 Meters deficit</div>
                     </div>
                 </div>
@@ -476,6 +467,14 @@
     </section>
 
     <footer class="references">
+        <div style="margin-bottom: 60px; border-left: 4px solid var(--tech-amber); padding-left: 20px;">
+            <h2 style="font-size: 1.5rem; margin-bottom: 10px;">THE VERDICT</h2>
+            <p style="color:white; font-family:'JetBrains Mono'; font-size: 0.9rem;">
+                The city maintains the road network year-round for vehicles, yet treats the child's path as an afterthought. 
+                The current design asks families to adapt to hostile geometry, rather than adapting the city to families.
+            </p>
+        </div>
+
         <h3 style="color: white; font-family: 'Anton'; margin-bottom: 30px; letter-spacing: 1px;">REFERENCES</h3>
         <div class="ref-item">Smart, B. (2026). <i>Field Observation Logs: Brampton, Ontario</i>. Unpublished Raw Data.</div>
         <div class="ref-item">Brampton GeoHub. (2025). <i>Open Data Portal: Parks and Pathways</i>. https://geohub.brampton.ca/</div>
@@ -505,4 +504,3 @@
 
 </body>
 </html>
-
