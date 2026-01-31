@@ -332,23 +332,31 @@
                     <img id="img1-day" src="map_hanover.jpg" class="map-img active">
                     <img id="img1-night" src="night_curve.jpg" class="map-img">
                 </div>
-                <div style="display: flex; justify-content: space-around; align-items: center; background: #1a1d21; padding: 12px; border-bottom: 1px solid var(--border-dim); border-left: 4px solid var(--tech-teal); font-family: 'JetBrains Mono', monospace;">
+                <div style="display: flex; flex-wrap: wrap; gap: 25px; align-items: center; background: var(--bg-panel); padding: 12px 20px; border-bottom: 1px solid var(--border-dim); font-family: 'JetBrains Mono', monospace;">
     
-    <div style="display: flex; align-items: center; gap: 8px;">
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 16px; height: 16px; background: #ffffff; border: 1px solid #94a3b8; flex-shrink: 0;"></div>
+        <span style="font-size: 0.7rem; color: var(--text-main); text-transform: uppercase; letter-spacing: 1px;">Pedestrian Flow</span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 10px;">
         <div style="width: 16px; height: 16px; background: rgba(255, 183, 77, 0.4); border: 1.5px solid var(--tech-amber); flex-shrink: 0;"></div>
-        <span style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">High Conflict Zone</span>
+        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Conflict Zone</span>
     </div>
 
-    <div style="display: flex; align-items: center; gap: 8px;">
-        <div style="width: 16px; height: 16px; background: var(--tech-teal); border-radius: 50%; border: 1.5px solid white; flex-shrink: 0;"></div>
-        <span style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Infrastructure</span>
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 16px; height: 16px; background: var(--tech-teal); border: 2px solid #ffffff; border-radius: 50%; flex-shrink: 0;"></div>
+        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Fixed Asset</span>
     </div>
 
-    <div style="display: flex; align-items: center; gap: 8px;">
-        <div style="width: 16px; height: 16px; background: #2ecc71; clip-path: polygon(50% 0%, 0% 100%, 100% 100%); flex-shrink: 0;"></div>
-        <span style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Observation Point</span>
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 16px; height: 16px; position: relative; flex-shrink: 0; display: flex; justify-content: center;">
+            <svg viewBox="0 0 24 24" fill="#2ecc71" style="width: 100%; height: 100%;">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+        </div>
+        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Observation Point</span>
     </div>
-
 </div>
                 <div class="data-hud">
                     <div class="hud-header"><span>ANALYSIS: THE IMPACT ZONE</span><span>LOC: HANOVER RD</span></div>
@@ -402,7 +410,32 @@
                     <img id="img2-day" src="map_pearson.jpg" class="map-img active">
                     <img id="img2-night" src="night_mound.jpg" class="map-img">
                 </div>
-                
+                <div style="display: flex; flex-wrap: wrap; gap: 25px; align-items: center; background: var(--bg-panel); padding: 12px 20px; border-bottom: 1px solid var(--border-dim); font-family: 'JetBrains Mono', monospace;">
+    
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 16px; height: 16px; background: #ffffff; border: 1px solid #94a3b8; flex-shrink: 0;"></div>
+        <span style="font-size: 0.7rem; color: var(--text-main); text-transform: uppercase; letter-spacing: 1px;">Pedestrian Flow</span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 16px; height: 16px; background: rgba(255, 183, 77, 0.4); border: 1.5px solid var(--tech-amber); flex-shrink: 0;"></div>
+        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Conflict Zone</span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 16px; height: 16px; background: var(--tech-teal); border: 2px solid #ffffff; border-radius: 50%; flex-shrink: 0;"></div>
+        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Fixed Asset</span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 16px; height: 16px; position: relative; flex-shrink: 0; display: flex; justify-content: center;">
+            <svg viewBox="0 0 24 24" fill="#2ecc71" style="width: 100%; height: 100%;">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+        </div>
+        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Observation Point</span>
+    </div>
+</div>
                 <div class="data-hud">
                     <div class="hud-header"><span>ANALYSIS: THE SPILLOVER ZONE</span><span>LOC: PEARSON LOT</span></div>
                     
@@ -446,7 +479,32 @@
                     <img id="img3-day" src="map_void.jpg" class="map-img active">
                     <img id="img3-night" src="night_wall.jpg" class="map-img">
                 </div>
-                
+                <div style="display: flex; flex-wrap: wrap; gap: 25px; align-items: center; background: var(--bg-panel); padding: 12px 20px; border-bottom: 1px solid var(--border-dim); font-family: 'JetBrains Mono', monospace;">
+    
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 16px; height: 16px; background: #ffffff; border: 1px solid #94a3b8; flex-shrink: 0;"></div>
+        <span style="font-size: 0.7rem; color: var(--text-main); text-transform: uppercase; letter-spacing: 1px;">Pedestrian Flow</span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 16px; height: 16px; background: rgba(255, 183, 77, 0.4); border: 1.5px solid var(--tech-amber); flex-shrink: 0;"></div>
+        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Conflict Zone</span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 16px; height: 16px; background: var(--tech-teal); border: 2px solid #ffffff; border-radius: 50%; flex-shrink: 0;"></div>
+        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Fixed Asset</span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 16px; height: 16px; position: relative; flex-shrink: 0; display: flex; justify-content: center;">
+            <svg viewBox="0 0 24 24" fill="#2ecc71" style="width: 100%; height: 100%;">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+        </div>
+        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Observation Point</span>
+    </div>
+</div>
                 <div class="data-hud">
                     <div class="hud-header"><span>ANALYSIS: VOID METRICS</span><span>LOC: 150 HOWDEN</span></div>
                     
@@ -491,7 +549,32 @@
                     <img id="img4-day" src="map_dixie.jpg" class="map-img active">
                     <img id="img4-night" src="night_sign.jpg" class="map-img">
                 </div>
-                
+                <div style="display: flex; flex-wrap: wrap; gap: 25px; align-items: center; background: var(--bg-panel); padding: 12px 20px; border-bottom: 1px solid var(--border-dim); font-family: 'JetBrains Mono', monospace;">
+    
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 16px; height: 16px; background: #ffffff; border: 1px solid #94a3b8; flex-shrink: 0;"></div>
+        <span style="font-size: 0.7rem; color: var(--text-main); text-transform: uppercase; letter-spacing: 1px;">Pedestrian Flow</span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 16px; height: 16px; background: rgba(255, 183, 77, 0.4); border: 1.5px solid var(--tech-amber); flex-shrink: 0;"></div>
+        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Conflict Zone</span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 16px; height: 16px; background: var(--tech-teal); border: 2px solid #ffffff; border-radius: 50%; flex-shrink: 0;"></div>
+        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Fixed Asset</span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 16px; height: 16px; position: relative; flex-shrink: 0; display: flex; justify-content: center;">
+            <svg viewBox="0 0 24 24" fill="#2ecc71" style="width: 100%; height: 100%;">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+        </div>
+        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Observation Point</span>
+    </div>
+</div>
                 <div class="data-hud">
                     <div class="hud-header"><span>ANALYSIS: THE DANGER ZONE</span><span>LOC: DIXIE RD</span></div>
                     
