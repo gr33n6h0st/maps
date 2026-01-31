@@ -164,12 +164,13 @@
             border-top: 3px solid var(--tech-teal); 
         }
         
+        /* RESTORED SIZING: Fixed height ensures stability when switching tabs */
         .map-frame {
-            width: 100%; height: auto;
+            width: 100%; height: 400px;
             position: relative; overflow: hidden; background: #000;
         }
         .map-img { 
-            width: 100%; height: auto; object-fit: contain; 
+            width: 100%; height: 100%; object-fit: cover; 
             display: none; animation: fadeIn 0.3s;
         }
         .map-img.active { display: block; }
@@ -189,13 +190,6 @@
             text-transform: uppercase;
         }
         
-        .tech-specs {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
-            margin-bottom: 35px; font-family: 'JetBrains Mono'; font-size: 0.75rem; color: var(--text-muted);
-        }
-        .spec-item { border-left: 2px solid var(--border-active); padding-left: 12px; }
-        .spec-item strong { color: var(--text-main); display: block; margin-bottom: 4px; font-weight: 600; }
-
         .bar-label-group {
             display: flex; justify-content: space-between; margin-bottom: 8px;
             font-family: 'JetBrains Mono'; font-size: 0.7rem;
@@ -227,9 +221,6 @@
         .tm-track { width: 100%; height: 2px; background: var(--border-active); position: absolute; top: 20px; }
         .tm-safe-bar { position: absolute; top: 18px; height: 6px; left: 0; width: 70%; background: var(--tech-amber); border-radius: 4px; }
         .tm-child-bar { position: absolute; top: 35px; height: 4px; left: 0; width: 95%; background: var(--tech-teal); border-radius: 4px; }
-
-        .references { background: #080a0c; padding: 80px 10%; border-top: 1px solid var(--border-dim); color: var(--text-muted); font-size: 0.85rem; }
-        .ref-item { padding-left: 40px; text-indent: -40px; margin-bottom: 15px; font-family: 'JetBrains Mono', monospace; line-height: 1.6; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -280,10 +271,10 @@
                     <img id="img1-night" src="night_curve.jpg" class="map-img">
                 </div>
                 <div style="display: flex; flex-wrap: wrap; gap: 25px; align-items: center; background: var(--bg-panel); padding: 12px 20px; border-bottom: 1px solid var(--border-dim); font-family: 'JetBrains Mono', monospace;">
-                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px; background: #ffffff; border: 1px solid #94a3b8;"></div><span style="font-size: 0.65rem; color: var(--text-main); text-transform: uppercase;">Pedestrian Flow</span></div>
-                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px; background: rgba(255, 183, 77, 0.4); border: 1.5px solid var(--tech-amber);"></div><span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Conflict Zone</span></div>
-                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px; background: var(--tech-teal); border: 2px solid #ffffff; border-radius: 50%;"></div><span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Fixed Asset</span></div>
-                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px;"><svg viewBox="0 0 24 24" fill="#2ecc71"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Observation Point</span></div>
+                    <div style="display: flex; align-items: center; gap: 10px;"><div style="width: 16px; height: 16px; background: #ffffff; border: 1px solid #94a3b8; flex-shrink: 0;"></div><span style="font-size: 0.7rem; color: var(--text-main); text-transform: uppercase; letter-spacing: 1px;">Pedestrian Flow</span></div>
+                    <div style="display: flex; align-items: center; gap: 10px;"><div style="width: 16px; height: 16px; background: rgba(255, 183, 77, 0.4); border: 1.5px solid var(--tech-amber); flex-shrink: 0;"></div><span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Conflict Zone</span></div>
+                    <div style="display: flex; align-items: center; gap: 10px;"><div style="width: 16px; height: 16px; background: var(--tech-teal); border: 2px solid #ffffff; border-radius: 50%; flex-shrink: 0;"></div><span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Fixed Asset</span></div>
+                    <div style="display: flex; align-items: center; gap: 10px;"><div style="width: 16px; height: 16px; position: relative; flex-shrink: 0;"><svg viewBox="0 0 24 24" fill="#2ecc71"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Observation Point</span></div>
                 </div>
                 <div class="data-hud">
                     <div class="hud-header"><span>ANALYSIS: THE IMPACT ZONE</span><span>LOC: HANOVER RD</span></div>
@@ -319,10 +310,10 @@
                     <img id="img2-night" src="night_mound.jpg" class="map-img">
                 </div>
                 <div style="display: flex; flex-wrap: wrap; gap: 25px; align-items: center; background: var(--bg-panel); padding: 12px 20px; border-bottom: 1px solid var(--border-dim); font-family: 'JetBrains Mono', monospace;">
-                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px; background: #ffffff; border: 1px solid #94a3b8;"></div><span style="font-size: 0.65rem; color: var(--text-main); text-transform: uppercase;">Pedestrian Flow</span></div>
-                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px; background: rgba(255, 183, 77, 0.4); border: 1.5px solid var(--tech-amber);"></div><span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Conflict Zone</span></div>
-                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px; background: var(--tech-teal); border: 2px solid #ffffff; border-radius: 50%;"></div><span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Fixed Asset</span></div>
-                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px;"><svg viewBox="0 0 24 24" fill="#2ecc71"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Observation Point</span></div>
+                    <div style="display: flex; align-items: center; gap: 10px;"><div style="width: 16px; height: 16px; background: #ffffff; border: 1px solid #94a3b8; flex-shrink: 0;"></div><span style="font-size: 0.7rem; color: var(--text-main); text-transform: uppercase; letter-spacing: 1px;">Pedestrian Flow</span></div>
+                    <div style="display: flex; align-items: center; gap: 10px;"><div style="width: 16px; height: 16px; background: rgba(255, 183, 77, 0.4); border: 1.5px solid var(--tech-amber); flex-shrink: 0;"></div><span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Conflict Zone</span></div>
+                    <div style="display: flex; align-items: center; gap: 10px;"><div style="width: 16px; height: 16px; background: var(--tech-teal); border: 2px solid #ffffff; border-radius: 50%; flex-shrink: 0;"></div><span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Fixed Asset</span></div>
+                    <div style="display: flex; align-items: center; gap: 10px;"><div style="width: 16px; height: 16px; position: relative; flex-shrink: 0;"><svg viewBox="0 0 24 24" fill="#2ecc71"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Observation Point</span></div>
                 </div>
                 <div class="data-hud">
                     <div class="hud-header"><span>ANALYSIS: THE SPILLOVER ZONE</span><span>LOC: PEARSON LOT</span></div>
@@ -356,10 +347,10 @@
                     <img id="img3-night" src="night_wall.jpg" class="map-img">
                 </div>
                 <div style="display: flex; flex-wrap: wrap; gap: 25px; align-items: center; background: var(--bg-panel); padding: 12px 20px; border-bottom: 1px solid var(--border-dim); font-family: 'JetBrains Mono', monospace;">
-                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px; background: #ffffff; border: 1px solid #94a3b8;"></div><span style="font-size: 0.65rem; color: var(--text-main); text-transform: uppercase;">Pedestrian Flow</span></div>
-                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px; background: rgba(255, 183, 77, 0.4); border: 1.5px solid var(--tech-amber);"></div><span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Conflict Zone</span></div>
-                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px; background: var(--tech-teal); border: 2px solid #ffffff; border-radius: 50%;"></div><span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Fixed Asset</span></div>
-                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px;"><svg viewBox="0 0 24 24" fill="#2ecc71"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Observation Point</span></div>
+                    <div style="display: flex; align-items: center; gap: 10px;"><div style="width: 16px; height: 16px; background: #ffffff; border: 1px solid #94a3b8; flex-shrink: 0;"></div><span style="font-size: 0.7rem; color: var(--text-main); text-transform: uppercase; letter-spacing: 1px;">Pedestrian Flow</span></div>
+                    <div style="display: flex; align-items: center; gap: 10px;"><div style="width: 16px; height: 16px; background: rgba(255, 183, 77, 0.4); border: 1.5px solid var(--tech-amber); flex-shrink: 0;"></div><span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Conflict Zone</span></div>
+                    <div style="display: flex; align-items: center; gap: 10px;"><div style="width: 16px; height: 16px; background: var(--tech-teal); border: 2px solid #ffffff; border-radius: 50%; flex-shrink: 0;"></div><span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Fixed Asset</span></div>
+                    <div style="display: flex; align-items: center; gap: 10px;"><div style="width: 16px; height: 16px; position: relative; flex-shrink: 0;"><svg viewBox="0 0 24 24" fill="#2ecc71"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Observation Point</span></div>
                 </div>
                 <div class="data-hud">
                     <div class="hud-header"><span>ANALYSIS: VOID METRICS</span><span>LOC: 150 HOWDEN</span></div>
@@ -396,10 +387,10 @@
                     <img id="img4-night" src="night_sign.jpg" class="map-img">
                 </div>
                 <div style="display: flex; flex-wrap: wrap; gap: 25px; align-items: center; background: var(--bg-panel); padding: 12px 20px; border-bottom: 1px solid var(--border-dim); font-family: 'JetBrains Mono', monospace;">
-                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px; background: #ffffff; border: 1px solid #94a3b8;"></div><span style="font-size: 0.65rem; color: var(--text-main); text-transform: uppercase;">Pedestrian Flow</span></div>
-                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px; background: rgba(255, 183, 77, 0.4); border: 1.5px solid var(--tech-amber);"></div><span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Conflict Zone</span></div>
-                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px; background: var(--tech-teal); border: 2px solid #ffffff; border-radius: 50%;"></div><span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Fixed Asset</span></div>
-                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px;"><svg viewBox="0 0 24 24" fill="#2ecc71"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Observation Point</span></div>
+                    <div style="display: flex; align-items: center; gap: 10px;"><div style="width: 16px; height: 16px; background: #ffffff; border: 1px solid #94a3b8; flex-shrink: 0;"></div><span style="font-size: 0.7rem; color: var(--text-main); text-transform: uppercase; letter-spacing: 1px;">Pedestrian Flow</span></div>
+                    <div style="display: flex; align-items: center; gap: 10px;"><div style="width: 16px; height: 16px; background: rgba(255, 183, 77, 0.4); border: 1.5px solid var(--tech-amber); flex-shrink: 0;"></div><span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Conflict Zone</span></div>
+                    <div style="display: flex; align-items: center; gap: 10px;"><div style="width: 16px; height: 16px; background: var(--tech-teal); border: 2px solid #ffffff; border-radius: 50%; flex-shrink: 0;"></div><span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Fixed Asset</span></div>
+                    <div style="display: flex; align-items: center; gap: 10px;"><div style="width: 16px; height: 16px; position: relative; flex-shrink: 0;"><svg viewBox="0 0 24 24" fill="#2ecc71"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Observation Point</span></div>
                 </div>
                 <div class="data-hud">
                     <div class="hud-header"><span>ANALYSIS: THE DANGER ZONE</span><span>LOC: DIXIE RD</span></div>
