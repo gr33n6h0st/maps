@@ -10,26 +10,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- THEME: INDUSTRIAL SLATE & GREY --- */
         :root {
-            /* Backgrounds - Neutral Greys */
             --bg-deep: #121417; 
             --bg-panel: #1a1d21;
-            
-            /* UI Borders */
             --border-dim: #33383e;
             --border-active: #4a5568;
-            
-            /* Text */
             --text-main: #e2e8f0;
             --text-muted: #94a3b8;
-            
-            /* PALETTE: Teal & Amber */
             --tech-teal: #4db6ac;     
             --tech-amber: #ffb74d;    
             --tech-slate: #64748b;    
-            
-            /* Gradients */
             --grad-teal: linear-gradient(90deg, #26a69a, #80cbc4);
             --grad-amber: linear-gradient(90deg, #ff9800, #ffcc80);
         }
@@ -44,7 +34,6 @@
             letter-spacing: -0.02em;
         }
 
-        /* --- TYPOGRAPHY --- */
         h1 { 
             font-family: 'Anton', sans-serif; 
             font-size: 5vw; 
@@ -84,7 +73,6 @@
             font-size: 0.8rem; 
         }
 
-        /* --- RESEARCH HUD (Restored Adjustment #2) --- */
         .research-hud {
             display: flex; justify-content: center; gap: 40px; margin: 30px auto;
             font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.03);
@@ -99,7 +87,6 @@
             font-size: 0.9rem; line-height: 1.6; font-style: italic;
         }
 
-        /* --- LAYOUT UTILS --- */
         .section {
             position: relative;
             min-height: 100vh;
@@ -117,19 +104,12 @@
             filter: grayscale(100%) contrast(1.2);
         }
 
-        .bg-hero { background-image: url('hero.jpg'); }
-        .bg-lens1 { background-image: url('curve.jpg'); }
-        .bg-lens2 { background-image: url('driveway.jpg'); }
-        .bg-lens3 { background-image: url('void.jpg'); }
-        .bg-lens4 { background-image: url('arterial.jpg'); }
-
         .container {
             width: 90%; max-width: 1600px;
             display: grid; grid-template-columns: 40% 55%; gap: 5%;
             z-index: 2;
         }
 
-        /* --- LEFT PANEL: NARRATIVE --- */
         .narrative-panel {
             background: rgba(26, 29, 33, 0.96);
             padding: 50px;
@@ -140,7 +120,6 @@
 
         .narrative-panel p { line-height: 1.7; color: #cbd5e1; font-weight: 300; }
 
-        /* BUTTONS */
         .field-note-toggle {
             background: #24292e; 
             border: none;
@@ -156,7 +135,6 @@
             background: var(--tech-teal); 
             color: #121417; 
         }
-        .field-note-toggle::after { content: "+ EXPAND LOG"; opacity: 0.7; }
 
         .hidden-note {
             display: none; background: #121417; padding: 25px;
@@ -166,12 +144,6 @@
             margin-top: 10px;
         }
 
-        /* --- SYNTHESIS SECTION (Restored Adjustment #1) --- */
-        .synthesis-section { padding: 80px 10%; background: #0d0f12; border-top: 1px solid var(--border-dim); }
-        .synthesis-quote { font-family: 'Inter', sans-serif; font-size: 1.8rem; font-weight: 300; font-style: italic; color: var(--text-main); line-height: 1.6; max-width: 1000px; margin: 0 auto; border-left: 4px solid var(--tech-teal); padding-left: 40px; }
-        .synthesis-quote b { color: var(--tech-teal); font-style: normal; }
-
-        /* --- RIGHT PANEL: VISUALS --- */
         .visual-stack { 
             display: flex; flex-direction: column; 
             border: 1px solid var(--border-dim); 
@@ -186,7 +158,6 @@
             font-family: 'JetBrains Mono', monospace; cursor: pointer; font-size: 0.75rem;
             transition: 0.2s; letter-spacing: 1px;
         }
-        .tab-btn:hover { color: white; }
         .tab-btn.active { 
             background: #121417; 
             color: var(--tech-teal); 
@@ -194,16 +165,15 @@
         }
         
         .map-frame {
-            width: 100%; height: 400px;
+            width: 100%; height: auto;
             position: relative; overflow: hidden; background: #000;
         }
         .map-img { 
-            width: 100%; height: 100%; object-fit: cover; 
+            width: 100%; height: auto; object-fit: contain; 
             display: none; animation: fadeIn 0.3s;
         }
         .map-img.active { display: block; }
 
-        /* --- DATA HUD --- */
         .data-hud { 
             padding: 35px; 
             background: #1a1d21;
@@ -226,7 +196,6 @@
         .spec-item { border-left: 2px solid var(--border-active); padding-left: 12px; }
         .spec-item strong { color: var(--text-main); display: block; margin-bottom: 4px; font-weight: 600; }
 
-        /* --- GRAPH STYLES --- */
         .bar-label-group {
             display: flex; justify-content: space-between; margin-bottom: 8px;
             font-family: 'JetBrains Mono'; font-size: 0.7rem;
@@ -239,23 +208,16 @@
         .impact-zone-label { color: var(--tech-amber); font-weight: bold; }
         .seg-safe { background: var(--grad-teal); width: 45%; height: 100%; position: absolute; left: 0; }
         .seg-danger { background: var(--border-active); width: 55%; height: 100%; position: absolute; left: 45%; }
-        .marker-line {
-            position: absolute; top: 0; bottom: 0; width: 2px; background: white; z-index: 10;
-        }
+        .marker-line { position: absolute; top: 0; bottom: 0; width: 2px; background: white; z-index: 10; }
         
-        .spillover-track { 
-            background: #24292e; height: 24px; border-radius: 12px; position: relative; overflow: hidden;
-        }
+        .spillover-track { background: #24292e; height: 24px; border-radius: 12px; position: relative; overflow: hidden; }
         .fill-safe { background: var(--grad-teal); width: 25%; height: 100%; position: absolute; }
         .fill-over { 
             background: repeating-linear-gradient(45deg, var(--tech-amber), var(--tech-amber) 10px, #e65100 10px, #e65100 20px); 
             left: 25%; width: 75%; height: 100%; position: absolute; 
         }
 
-        .audit-grid { 
-            display: grid; grid-template-columns: 1fr 120px; gap: 2px; 
-            background: var(--border-dim); border-radius: 8px; overflow: hidden;
-        }
+        .audit-grid { display: grid; grid-template-columns: 1fr 120px; gap: 2px; background: var(--border-dim); border-radius: 8px; overflow: hidden; }
         .audit-cell { background: #24292e; padding: 12px 15px; font-family: 'JetBrains Mono'; font-size: 0.7rem; }
         .status-cell { text-align: center; font-weight: bold; background: #121417; }
         .stat-fail { color: var(--tech-amber); }
@@ -263,24 +225,11 @@
 
         .timeline-container { position: relative; height: 60px; margin-top: 20px; }
         .tm-track { width: 100%; height: 2px; background: var(--border-active); position: absolute; top: 20px; }
-        
-        .tm-safe-bar { 
-            position: absolute; top: 18px; height: 6px; left: 0; width: 70%; 
-            background: var(--tech-amber); border-radius: 4px;
-        }
-        .tm-child-bar {
-            position: absolute; top: 35px; height: 4px; left: 0; width: 95%;
-            background: var(--tech-teal); border-radius: 4px;
-        }
+        .tm-safe-bar { position: absolute; top: 18px; height: 6px; left: 0; width: 70%; background: var(--tech-amber); border-radius: 4px; }
+        .tm-child-bar { position: absolute; top: 35px; height: 4px; left: 0; width: 95%; background: var(--tech-teal); border-radius: 4px; }
 
-        .references { 
-            background: #080a0c; padding: 80px 10%; border-top: 1px solid var(--border-dim); 
-            color: var(--text-muted); font-size: 0.85rem; 
-        }
-        .ref-item { 
-            padding-left: 40px; text-indent: -40px; margin-bottom: 15px; 
-            font-family: 'JetBrains Mono', monospace; line-height: 1.6;
-        }
+        .references { background: #080a0c; padding: 80px 10%; border-top: 1px solid var(--border-dim); color: var(--text-muted); font-size: 0.85rem; }
+        .ref-item { padding-left: 40px; text-indent: -40px; margin-bottom: 15px; font-family: 'JetBrains Mono', monospace; line-height: 1.6; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -293,12 +242,11 @@
 <body>
 
     <section class="section">
-        <div class="bg-fixed bg-hero"></div>
+        <div class="bg-fixed" style="background-image: url('hero.jpg');"></div>
         <div style="text-align: center; z-index: 5;">
             <div class="lens-tag">SOCIOLOGICAL INQUIRY</div>
             <h1>Spatial Antagonism &<br>Environmental Deprivation</h1>
             <p class="author">BRANDON SMART // 2026</p>
-
             <p class="purpose-statement">Purpose: An investigation into the structural exclusion of children from public space through hostile infrastructure design and the resulting "visibility gaps" within the Howden-Dixie corridor.</p>
             <div class="research-hud">
                 <div class="hud-stat"><span class="hud-val">1.5 HOURS</span><span class="hud-label">Total Duration</span></div>
@@ -310,7 +258,6 @@
     </section>
 
     <section class="section">
-        <div class="bg-fixed bg-lens1"></div>
         <div class="container">
             <div class="narrative-panel">
                 <span class="lens-tag">LENS 01 // SPATIAL ANTAGONISM</span>
@@ -319,7 +266,7 @@
                 <button class="field-note-toggle" onclick="toggleNote('note1')">Read Field Notes</button>
                 <div id="note1" class="hidden-note">
                     <strong>LOG: THE HANOVER GEOMETRY</strong><br>
-                    Analysis of the sightlines suggests a driver has less than <strong>2 seconds</strong> to react to a child emerging from behind winter snow windrows. This geometric failure renders crossing guards the <strong>only line of defense</strong> in a layout where driver sightlines are reduced by <strong>40%</strong> due to curve radius and seasonal obstruction.
+                    Analysis of the sightlines suggests a driver has less than <strong>2 seconds</strong> to react to a child emerging from behind winter snow windrows. Driver sightlines are reduced by <strong>40%</strong> due to curve radius and seasonal obstruction.
                 </div>
             </div>
 
@@ -333,54 +280,17 @@
                     <img id="img1-night" src="night_curve.jpg" class="map-img">
                 </div>
                 <div style="display: flex; flex-wrap: wrap; gap: 25px; align-items: center; background: var(--bg-panel); padding: 12px 20px; border-bottom: 1px solid var(--border-dim); font-family: 'JetBrains Mono', monospace;">
-    
-    <div style="display: flex; align-items: center; gap: 10px;">
-        <div style="width: 16px; height: 16px; background: #ffffff; border: 1px solid #94a3b8; flex-shrink: 0;"></div>
-        <span style="font-size: 0.7rem; color: var(--text-main); text-transform: uppercase; letter-spacing: 1px;">Pedestrian Flow</span>
-    </div>
-
-    <div style="display: flex; align-items: center; gap: 10px;">
-        <div style="width: 16px; height: 16px; background: rgba(255, 183, 77, 0.4); border: 1.5px solid var(--tech-amber); flex-shrink: 0;"></div>
-        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Conflict Zone</span>
-    </div>
-
-    <div style="display: flex; align-items: center; gap: 10px;">
-        <div style="width: 16px; height: 16px; background: var(--tech-teal); border: 2px solid #ffffff; border-radius: 50%; flex-shrink: 0;"></div>
-        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Fixed Asset</span>
-    </div>
-
-    <div style="display: flex; align-items: center; gap: 10px;">
-        <div style="width: 16px; height: 16px; position: relative; flex-shrink: 0; display: flex; justify-content: center;">
-            <svg viewBox="0 0 24 24" fill="#2ecc71" style="width: 100%; height: 100%;">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-            </svg>
-        </div>
-        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Observation Point</span>
-    </div>
-</div>
+                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px; background: #ffffff; border: 1px solid #94a3b8;"></div><span style="font-size: 0.65rem; color: var(--text-main); text-transform: uppercase;">Pedestrian Flow</span></div>
+                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px; background: rgba(255, 183, 77, 0.4); border: 1.5px solid var(--tech-amber);"></div><span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Conflict Zone</span></div>
+                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px; background: var(--tech-teal); border: 2px solid #ffffff; border-radius: 50%;"></div><span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Fixed Asset</span></div>
+                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px;"><svg viewBox="0 0 24 24" fill="#2ecc71"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Observation Point</span></div>
+                </div>
                 <div class="data-hud">
                     <div class="hud-header"><span>ANALYSIS: THE IMPACT ZONE</span><span>LOC: HANOVER RD</span></div>
-                    
                     <div class="physics-chart">
-                        <div class="bar-label-group">
-                            <span style="color:var(--tech-teal)">VISIBILITY LIMIT (25m)</span>
-                            <span class="impact-zone-label">THE IMPACT ZONE (Danger)</span>
-                        </div>
-                        <div class="graph-pill-container">
-                            <div class="seg-safe"></div>
-                            <div class="seg-danger"></div>
-                            <div class="marker-line" style="left: 48%;"></div> 
-                        </div>
-                        <div style="display:flex; justify-content:space-between; margin-top:5px; font-family:'JetBrains Mono'; font-size:0.6rem; color:var(--text-muted);">
-                            <span>0m</span>
-                            <span style="color:white;">STOP REQ: 26m ▲</span>
-                            <span>50m</span>
-                        </div>
-                    </div>
-
-                    <div class="tech-specs" style="margin-top:20px; margin-bottom:0;">
-                        <div class="spec-item"><strong>SPEED DELTA</strong>+4 km/h over limit</div>
-                        <div class="spec-item"><strong>VISIBILITY GAP</strong>-1.0 Meters deficit</div>
+                        <div class="bar-label-group"><span style="color:var(--tech-teal)">VISIBILITY LIMIT (25m)</span><span class="impact-zone-label">THE IMPACT ZONE (Danger)</span></div>
+                        <div class="graph-pill-container"><div class="seg-safe"></div><div class="seg-danger"></div><div class="marker-line" style="left: 48%;"></div></div>
+                        <div style="display:flex; justify-content:space-between; margin-top:5px; font-family:'JetBrains Mono'; font-size:0.6rem; color:var(--text-muted);"><span>0m</span><span style="color:white;">STOP REQ: 26m ▲</span><span>50m</span></div>
                     </div>
                 </div>
             </div>
@@ -388,19 +298,17 @@
     </section>
 
     <section class="section">
-        <div class="bg-fixed bg-lens2"></div>
         <div class="container">
             <div class="narrative-panel">
                 <span class="lens-tag">LENS 02 // SPATIAL ANTAGONISM</span>
                 <h2>The Squeeze</h2>
-                <p>At Lester B. Pearson, the 'Kiss and Ride' infrastructure collapses under vehicle volume. This dual-lane conflict forces 76% of children to step into traffic lanes, effectively prioritizing machine movement over child safety through forced risk.</p>
+                <p>At Lester B. Pearson, the 'Kiss and Ride' infrastructure collapses under vehicle volume. This dual-lane conflict forces 76% of children to step into traffic lanes, effectively prioritizing machine movement over child safety.</p>
                 <button class="field-note-toggle" onclick="toggleNote('note2')">Read Field Notes</button>
                 <div id="note2" class="hidden-note">
                     <strong>LOG: THE DOUBLE-LANE TRAP</strong><br>
-                    Observed <strong>50 cars</strong>: <strong>38 children</strong> exited into the traffic 'drive-through' lane; only <strong>12</strong> utilized the curb. The lack of faculty supervision exacerbates this chaos; the zone relies entirely on <strong>aggressive negotiation of space</strong> between rushing parents while <strong>6-foot</strong> snow windrows force drivers to 'nose out' blindly into the pedestrian path.
+                    Observed <strong>50 cars</strong>: 38 children exited into the traffic 'drive-through' lane; only 12 utilized the curb. The zone relies entirely on aggressive negotiation of space between rushing parents.
                 </div>
             </div>
-
             <div class="visual-stack">
                 <div class="tab-bar">
                     <button class="tab-btn active" onclick="switchTab(this, 'img2-day', 'img2-night')">MAP OVERLAY</button>
@@ -411,65 +319,33 @@
                     <img id="img2-night" src="night_mound.jpg" class="map-img">
                 </div>
                 <div style="display: flex; flex-wrap: wrap; gap: 25px; align-items: center; background: var(--bg-panel); padding: 12px 20px; border-bottom: 1px solid var(--border-dim); font-family: 'JetBrains Mono', monospace;">
-    
-    <div style="display: flex; align-items: center; gap: 10px;">
-        <div style="width: 16px; height: 16px; background: #ffffff; border: 1px solid #94a3b8; flex-shrink: 0;"></div>
-        <span style="font-size: 0.7rem; color: var(--text-main); text-transform: uppercase; letter-spacing: 1px;">Pedestrian Flow</span>
-    </div>
-
-    <div style="display: flex; align-items: center; gap: 10px;">
-        <div style="width: 16px; height: 16px; background: rgba(255, 183, 77, 0.4); border: 1.5px solid var(--tech-amber); flex-shrink: 0;"></div>
-        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Conflict Zone</span>
-    </div>
-
-    <div style="display: flex; align-items: center; gap: 10px;">
-        <div style="width: 16px; height: 16px; background: var(--tech-teal); border: 2px solid #ffffff; border-radius: 50%; flex-shrink: 0;"></div>
-        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Fixed Asset</span>
-    </div>
-
-    <div style="display: flex; align-items: center; gap: 10px;">
-        <div style="width: 16px; height: 16px; position: relative; flex-shrink: 0; display: flex; justify-content: center;">
-            <svg viewBox="0 0 24 24" fill="#2ecc71" style="width: 100%; height: 100%;">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-            </svg>
-        </div>
-        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Observation Point</span>
-    </div>
-</div>
+                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px; background: #ffffff; border: 1px solid #94a3b8;"></div><span style="font-size: 0.65rem; color: var(--text-main); text-transform: uppercase;">Pedestrian Flow</span></div>
+                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px; background: rgba(255, 183, 77, 0.4); border: 1.5px solid var(--tech-amber);"></div><span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Conflict Zone</span></div>
+                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px; background: var(--tech-teal); border: 2px solid #ffffff; border-radius: 50%;"></div><span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Fixed Asset</span></div>
+                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px;"><svg viewBox="0 0 24 24" fill="#2ecc71"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Observation Point</span></div>
+                </div>
                 <div class="data-hud">
                     <div class="hud-header"><span>ANALYSIS: THE SPILLOVER ZONE</span><span>LOC: PEARSON LOT</span></div>
-                    
-                    <div class="bar-label-group">
-                        <span style="color:var(--tech-teal)">DESIGN CAPACITY (12)</span>
-                        <span style="color:var(--tech-amber)">THE SPILLOVER ZONE (33)</span>
-                    </div>
-                    <div class="spillover-track">
-                        <div class="fill-safe"></div>
-                        <div class="fill-over"></div>
-                        <div style="position:absolute; left:25%; top:0; bottom:0; border-left:2px solid white;"></div>
-                    </div>
-                    <div style="text-align:center; font-family:'JetBrains Mono'; font-size:0.6rem; color:var(--text-muted); margin-top:5px;">
-                        ▲ SYSTEM FAILURE POINT
-                    </div>
+                    <div class="bar-label-group"><span style="color:var(--tech-teal)">DESIGN CAPACITY (12)</span><span style="color:var(--tech-amber)">THE SPILLOVER ZONE (33)</span></div>
+                    <div class="spillover-track"><div class="fill-safe"></div><div class="fill-over"></div><div style="position:absolute; left:25%; border-left:2px solid white; height:100%;"></div></div>
+                    <div style="text-align:center; font-family:'JetBrains Mono'; font-size:0.6rem; color:var(--text-muted); margin-top:5px;">▲ SYSTEM FAILURE POINT</div>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="section">
-        <div class="bg-fixed bg-lens3"></div>
         <div class="container">
             <div class="narrative-panel">
                 <span class="lens-tag">LENS 03 // ENV. DEPRIVATION</span>
                 <h2>The Urban Void</h2>
-                <p>The 150 Howden Blvd site represents a distinct form of environmental deprivation. Since the demolition of the Recreation Centre, the site has been reduced to a desolate, flat plain. Concrete jersey barriers—defensive architecture—signal that this community space is now 'dead'.</p>
+                <p>The 150 Howden Blvd site represents a distinct form of environmental deprivation. Since the demolition of the Recreation Centre, the site has been reduced to a desolate, flat plain.</p>
                 <button class="field-note-toggle" onclick="toggleNote('note3')">Read Field Notes</button>
                 <div id="note3" class="hidden-note">
                     <strong>LOG: THE ARCHITECTURE OF NEGLECT</strong><br>
-                    The removal of the indoor playground has created a <strong>200-meter 'hole'</strong> in the social fabric. Students walking past are visible to high-speed traffic but <strong>disconnected from community support</strong>. This 'void' offers <strong>0</strong> 'eyes on the street,' resulting in a <strong>100% loss</strong> of passive surveillance for pedestrians.
+                    The removal of the indoor playground has created a 200-meter 'hole' in the social fabric. Students are visible to high-speed traffic but disconnected from community support.
                 </div>
             </div>
-
             <div class="visual-stack">
                 <div class="tab-bar">
                     <button class="tab-btn active" onclick="switchTab(this, 'img3-day', 'img3-night')">MAP OVERLAY</button>
@@ -480,46 +356,18 @@
                     <img id="img3-night" src="night_wall.jpg" class="map-img">
                 </div>
                 <div style="display: flex; flex-wrap: wrap; gap: 25px; align-items: center; background: var(--bg-panel); padding: 12px 20px; border-bottom: 1px solid var(--border-dim); font-family: 'JetBrains Mono', monospace;">
-    
-    <div style="display: flex; align-items: center; gap: 10px;">
-        <div style="width: 16px; height: 16px; background: #ffffff; border: 1px solid #94a3b8; flex-shrink: 0;"></div>
-        <span style="font-size: 0.7rem; color: var(--text-main); text-transform: uppercase; letter-spacing: 1px;">Pedestrian Flow</span>
-    </div>
-
-    <div style="display: flex; align-items: center; gap: 10px;">
-        <div style="width: 16px; height: 16px; background: rgba(255, 183, 77, 0.4); border: 1.5px solid var(--tech-amber); flex-shrink: 0;"></div>
-        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Conflict Zone</span>
-    </div>
-
-    <div style="display: flex; align-items: center; gap: 10px;">
-        <div style="width: 16px; height: 16px; background: var(--tech-teal); border: 2px solid #ffffff; border-radius: 50%; flex-shrink: 0;"></div>
-        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Fixed Asset</span>
-    </div>
-
-    <div style="display: flex; align-items: center; gap: 10px;">
-        <div style="width: 16px; height: 16px; position: relative; flex-shrink: 0; display: flex; justify-content: center;">
-            <svg viewBox="0 0 24 24" fill="#2ecc71" style="width: 100%; height: 100%;">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-            </svg>
-        </div>
-        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Observation Point</span>
-    </div>
-</div>
+                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px; background: #ffffff; border: 1px solid #94a3b8;"></div><span style="font-size: 0.65rem; color: var(--text-main); text-transform: uppercase;">Pedestrian Flow</span></div>
+                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px; background: rgba(255, 183, 77, 0.4); border: 1.5px solid var(--tech-amber);"></div><span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Conflict Zone</span></div>
+                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px; background: var(--tech-teal); border: 2px solid #ffffff; border-radius: 50%;"></div><span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Fixed Asset</span></div>
+                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px;"><svg viewBox="0 0 24 24" fill="#2ecc71"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Observation Point</span></div>
+                </div>
                 <div class="data-hud">
                     <div class="hud-header"><span>ANALYSIS: VOID METRICS</span><span>LOC: 150 HOWDEN</span></div>
-                    
                     <div class="audit-grid">
-                        <div class="audit-cell">COMMUNITY UTILITY (PRE-2020)</div>
-                        <div class="audit-cell status-cell stat-pass">100%</div>
-
-                        <div class="audit-cell">CURRENT USABLE INFRASTRUCTURE</div>
-                        <div class="audit-cell status-cell stat-fail">0%</div>
-
-                        <div class="audit-cell">EYES ON THE STREET (JACOBS INDEX)</div>
-                        <div class="audit-cell status-cell stat-fail">ZERO</div>
-                        
-                        <div class="audit-cell">DEFENSIVE BARRIER DENSITY</div>
-                        <div class="audit-cell status-cell stat-pass">HIGH</div>
+                        <div class="audit-cell">COMMUNITY UTILITY (PRE-2020)</div><div class="audit-cell status-cell stat-pass">100%</div>
+                        <div class="audit-cell">CURRENT USABLE INFRASTRUCTURE</div><div class="audit-cell status-cell stat-fail">0%</div>
+                        <div class="audit-cell">EYES ON THE STREET (JACOBS INDEX)</div><div class="audit-cell status-cell stat-fail">ZERO</div>
+                        <div class="audit-cell">DEFENSIVE BARRIER DENSITY</div><div class="audit-cell status-cell stat-pass">HIGH</div>
                     </div>
                 </div>
             </div>
@@ -527,19 +375,17 @@
     </section>
 
     <section class="section">
-        <div class="bg-fixed bg-lens4"></div>
         <div class="container">
             <div class="narrative-panel">
                 <span class="lens-tag">LENS 04 // ENV. DEPRIVATION</span>
                 <h2>The Arterial Wall</h2>
-                <p>The high-speed commuter traffic on Dixie Road creates an arterial wall that severs the school zone from residential neighborhoods. This noise and pollution buffer functions as a physical barrier to independent mobility for children.</p>
+                <p>The high-speed commuter traffic on Dixie Road creates an arterial wall that severs the school zone from residential neighborhoods.</p>
                 <button class="field-note-toggle" onclick="toggleNote('note4')">Read Field Notes</button>
                 <div id="note4" class="hidden-note">
                     <strong>LOG: MACHINE SPACE</strong><br>
-                    Observed children crossing at Howden/Dixie. Signal timing is optimized for vehicle throughput, not human physiology. Children are often trapped in the median for <strong>15-20 seconds</strong> as the light cycles, surrounded by <strong>60km/h+ transit</strong>, creating an environment of <strong>extreme sensory hostility</strong>.
+                    Observed children crossing at Howden/Dixie. Signal timing is optimized for vehicles. Children are often trapped in the median for 15-20 seconds.
                 </div>
             </div>
-
             <div class="visual-stack">
                 <div class="tab-bar">
                     <button class="tab-btn active" onclick="switchTab(this, 'img4-day', 'img4-night')">MAP OVERLAY</button>
@@ -550,117 +396,40 @@
                     <img id="img4-night" src="night_sign.jpg" class="map-img">
                 </div>
                 <div style="display: flex; flex-wrap: wrap; gap: 25px; align-items: center; background: var(--bg-panel); padding: 12px 20px; border-bottom: 1px solid var(--border-dim); font-family: 'JetBrains Mono', monospace;">
-    
-    <div style="display: flex; align-items: center; gap: 10px;">
-        <div style="width: 16px; height: 16px; background: #ffffff; border: 1px solid #94a3b8; flex-shrink: 0;"></div>
-        <span style="font-size: 0.7rem; color: var(--text-main); text-transform: uppercase; letter-spacing: 1px;">Pedestrian Flow</span>
-    </div>
-
-    <div style="display: flex; align-items: center; gap: 10px;">
-        <div style="width: 16px; height: 16px; background: rgba(255, 183, 77, 0.4); border: 1.5px solid var(--tech-amber); flex-shrink: 0;"></div>
-        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Conflict Zone</span>
-    </div>
-
-    <div style="display: flex; align-items: center; gap: 10px;">
-        <div style="width: 16px; height: 16px; background: var(--tech-teal); border: 2px solid #ffffff; border-radius: 50%; flex-shrink: 0;"></div>
-        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Fixed Asset</span>
-    </div>
-
-    <div style="display: flex; align-items: center; gap: 10px;">
-        <div style="width: 16px; height: 16px; position: relative; flex-shrink: 0; display: flex; justify-content: center;">
-            <svg viewBox="0 0 24 24" fill="#2ecc71" style="width: 100%; height: 100%;">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-            </svg>
-        </div>
-        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Observation Point</span>
-    </div>
-</div>
+                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px; background: #ffffff; border: 1px solid #94a3b8;"></div><span style="font-size: 0.65rem; color: var(--text-main); text-transform: uppercase;">Pedestrian Flow</span></div>
+                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px; background: rgba(255, 183, 77, 0.4); border: 1.5px solid var(--tech-amber);"></div><span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Conflict Zone</span></div>
+                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px; background: var(--tech-teal); border: 2px solid #ffffff; border-radius: 50%;"></div><span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Fixed Asset</span></div>
+                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 14px; height: 14px;"><svg viewBox="0 0 24 24" fill="#2ecc71"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Observation Point</span></div>
+                </div>
                 <div class="data-hud">
                     <div class="hud-header"><span>ANALYSIS: THE DANGER ZONE</span><span>LOC: DIXIE RD</span></div>
-                    
-                    <div class="bar-label-group">
-                        <span style="color:var(--tech-amber)">SIGNAL DURATION (25s)</span>
-                        <span style="color:var(--tech-teal)">CHILD CROSSING TIME (35s)</span>
-                    </div>
-
-                    <div class="timeline-container">
-                        <div class="tm-track"></div>
-                        <div class="tm-safe-bar"></div>
-                        <div class="tm-child-bar"></div>
-                        <div style="position: absolute; left: 70%; width: 25%; top: 0; bottom: 0; background: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255, 183, 77, 0.2) 2px, rgba(255, 183, 77, 0.2) 4px); border-left: 1px dashed var(--tech-amber);"></div>
-                        <div style="position: absolute; left: 72%; top: 45px; font-family: 'JetBrains Mono'; font-size: 0.6rem; color: var(--tech-amber); font-weight: bold;">THE DANGER ZONE ▲</div>
-                    </div>
+                    <div class="bar-label-group"><span style="color:var(--tech-amber)">SIGNAL DURATION (25s)</span><span style="color:var(--tech-teal)">CHILD CROSSING TIME (35s)</span></div>
+                    <div class="timeline-container"><div class="tm-track"></div><div class="tm-safe-bar"></div><div class="tm-child-bar"></div><div style="position: absolute; left: 70%; top: -10px; color: var(--tech-amber); font-family: 'JetBrains Mono'; font-size: 0.6rem;">▲ SIGNAL END</div></div>
                 </div>
             </div>
         </div>
     </section>
-
-    <div class="synthesis-section">
-        <div class="synthesis-quote">
-            "<b>Synthesis:</b> The Howden-Dixie corridor demonstrates that <b>urban neglect is not accidental, but structural</b>. When infrastructure prioritizes machine efficiency over human physiology, the resulting 'Spatial Antagonism' renders the most vulnerable citizens invisible, effectively <b>evicting children from the public sphere</b> through designed risk."
-        </div>
-    </div>
-
-    <section class="section">
-        <div class="container" style="grid-template-columns: 1fr;">
-            <div class="narrative-panel" style="width: 100%;">
-                <span class="lens-tag">SYSTEMS OVERVIEW // AGGREGATE DATA</span>
-                <h2>Neighborhood Systemic Vulnerability</h2>
-                <p>The following metrics represent the compounding failures of the Howden/Dixie corridor. Vulnerability is defined as the gap between infrastructure design and human safety requirements.</p>
-                
-                <div class="data-hud" style="margin-top: 30px; background: #121417; border: 1px solid var(--border-dim);">
-                    <div class="hud-header"><span>TOTAL QUANTITATIVE ANALYSIS</span><span>ZONE: HOWDEN CORRIDOR</span></div>
-                    
-                    <div class="bar-label-group"><span style="color:var(--text-main)">HANOVER BLIND CURVE (VISIBILITY DEFICIT)</span><span>40% DEFICIT</span></div>
-                    <div class="graph-pill-container" style="margin-bottom: 20px;"><div style="background: var(--tech-amber); width: 40%; height: 100%;"></div></div>
-
-                    <div class="bar-label-group"><span style="color:var(--text-main)">PEARSON KISS & RIDE (UNSAFE EXITS)</span><span>76% CONFLICT RATE</span></div>
-                    <div class="graph-pill-container" style="margin-bottom: 20px;"><div style="background: #e65100; width: 76%; height: 100%;"></div></div>
-
-                    <div class="bar-label-group"><span style="color:var(--text-main)">150 HOWDEN VOID (PASSIVE SURVEILLANCE LOSS)</span><span>100% ISOLATION</span></div>
-                    <div class="graph-pill-container" style="margin-bottom: 20px;"><div style="background: #ff5252; width: 100%; height: 100%;"></div></div>
-
-                    <div class="bar-label-group"><span style="color:var(--text-main)">DIXIE ARTERIAL (SIGNAL GAP)</span><span>28% TIME DEFICIT</span></div>
-                    <div class="graph-pill-container"><div style="background: var(--tech-teal); width: 28%; height: 100%;"></div></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="references">
-        <h3 style="color: white; font-family: 'Anton'; margin-bottom: 30px; letter-spacing: 1px;">REFERENCES</h3>
-        <div class="ref-item">Smart, B. (2026). <i>Field Observation Logs: Brampton, Ontario</i>. Unpublished Raw Data.</div>
-        <div class="ref-item">Brampton GeoHub. (2025). <i>Open Data Portal: Parks and Pathways</i>. https://geohub.brampton.ca/</div>
-        <div class="ref-item">Bunge, W. (1973). <i>The geography of a revolution</i>. Schenkman Publishing Company.</div>
-        <div class="ref-item">Google. (2025). [Satellite imagery of Brampton, Ontario]. Google Earth Pro.</div>
-        <div class="ref-item">Jacobs, J. (1961). <i>The death and life of great American cities</i>. Random House.</div>
-        <div class="ref-item">Lynch, K. (1960). <i>The image of the city</i>. MIT Press.</div>
-        <div class="ref-item">Region of Peel. (2025). <i>Traffic data and vision zero statistics</i>. https://www.peelregion.ca/transportation</div>
-    </footer>
 
     <script>
         function toggleNote(id) {
-            var note = document.getElementById(id);
-            if (note.style.display === "block") { note.style.display = "none"; } 
-            else { note.style.display = "block"; }
+            const note = document.getElementById(id);
+            const btn = note.previousElementSibling;
+            if (note.style.display === "block") {
+                note.style.display = "none";
+                btn.innerText = "Read Field Notes";
+            } else {
+                note.style.display = "block";
+                btn.innerText = "Hide Field Notes";
+            }
         }
 
         function switchTab(btn, showId, hideId) {
-            var parent = btn.parentElement;
-            var buttons = parent.getElementsByClassName('tab-btn');
-            for(var i=0; i<buttons.length; i++) { buttons[i].classList.remove('active'); }
-            btn.classList.add('active');
             document.getElementById(showId).classList.add('active');
             document.getElementById(hideId).classList.remove('active');
+            btn.parentElement.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
         }
     </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
